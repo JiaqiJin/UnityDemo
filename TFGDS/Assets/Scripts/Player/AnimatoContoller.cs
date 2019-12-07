@@ -7,6 +7,7 @@ public class AnimatoContoller : MonoBehaviour
     public GameObject model;
     public PlayerInput pi;
     public float walkSpeed = 1.4f;
+    public float runMultiplier;
 
     private Animator anim;
     private Rigidbody rigid;
@@ -22,13 +23,13 @@ public class AnimatoContoller : MonoBehaviour
     // Update is called once per frame
     void Update() // 1 / 60
     {
-        anim.SetFloat("forward", pi.Dmag);
+        anim.SetFloat("forward", pi.Dmag * ((pi.run) ? 2.0f : 1.0f));
         if (pi.Dmag > 0.1f) {
             // giro del personajes
             model.transform.forward = pi.Dvec;
         }
         // vector  que alamacena la veclocidad 
-        movingVect = pi.Dmag * model.transform.forward * walkSpeed;
+        movingVect = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run)? runMultiplier : 1.0f);
     }
 
     private void FixedUpdate()  // 1 / 50

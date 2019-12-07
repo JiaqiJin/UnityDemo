@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [Header("======== Key Setting ========")]
     //Variables para entrada de teclados
     public string keyUp;
     public string keyDown;
     public string keyLeft;
     public string keyRight;
 
+    public string keyA; // almace run 
+    public string keyB;
+    public string keyC;
+    public string keyD;
 
+    [Header("======== Output Señal ========")]
     public float Dup;
     public float Dright;
     public float Dmag;
     public Vector3 Dvec;
 
+    public bool run;
 
+
+    [Header("======== Otros ========")]
     public bool inputEnable = true; // varibale para comprobar si puede recibir señal o no
+
 
     // variables para smoothdamp
     private float targetDup;
@@ -50,5 +60,7 @@ public class PlayerInput : MonoBehaviour
         Dright = Mathf.SmoothDamp(Dright, targetDright, ref velocityDright, 0.1f);
         Dmag = Mathf.Sqrt((Dup * Dup) + (Dright * Dright)); // movimiento del personajes
         Dvec = Dright * transform.right + Dup * transform.forward; // giro del personakes
+
+        run = Input.GetKey(keyA);
     }
 }
