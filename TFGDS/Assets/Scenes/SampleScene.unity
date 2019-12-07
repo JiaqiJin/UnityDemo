@@ -338,6 +338,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ca7a7a6afda43546bd0e1bba3aec6bd, type: 3}
+--- !u!1 &357201911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100192, guid: 1ca7a7a6afda43546bd0e1bba3aec6bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 357201910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +437,8 @@ GameObject:
   - component: {fileID: 1607955995}
   - component: {fileID: 1607955992}
   - component: {fileID: 1607955991}
+  - component: {fileID: 1607955993}
+  - component: {fileID: 1607955994}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -456,6 +464,8 @@ MonoBehaviour:
   keyRight: d
   Dup: 0
   Dright: 0
+  Dmag: 0
+  Dvec: {x: 0, y: 0, z: 0}
   inputEnable: 1
 --- !u!136 &1607955992
 CapsuleCollider:
@@ -471,6 +481,37 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1607955993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607955990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62093257d6ce10448edbb4cda511a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 357201911}
+  pi: {fileID: 0}
+  walkSpeed: 1.65
+--- !u!54 &1607955994
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607955990}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!4 &1607955995
 Transform:
   m_ObjectHideFlags: 0
