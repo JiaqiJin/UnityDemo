@@ -8,10 +8,15 @@ public class AnimatoContoller : MonoBehaviour
     public PlayerInput pi;
     public float walkSpeed = 1.4f;
     public float runMultiplier;
+    public float jumpVelocity = 5.0f;
+    public float rollVelocity = 1.0f;
 
     private Animator anim;
     private Rigidbody rigid;
-    private Vector3 movingVect;
+    private Vector3 movingVect; // vector de movimiento
+    private Vector3 thrustVect; // vector de impulso
+
+    private bool lockMoving = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,18 +28,98 @@ public class AnimatoContoller : MonoBehaviour
     // Update is called once per frame
     void Update() // 1 / 60
     {
-        anim.SetFloat("forward", pi.Dmag * ((pi.run) ? 2.0f : 1.0f));
-        if (pi.Dmag > 0.1f) {
-            // giro del personajes
-            model.transform.forward = pi.Dvec;
+          AnimationUpdate();
+        if(lockMoving == false)
+        {
+            // vector  que alamacena la veclocidad 
+            movingVect = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run) ? runMultiplier : 1.0f);
         }
-        // vector  que alamacena la veclocidad 
-        movingVect = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run)? runMultiplier : 1.0f);
+          
+    }
+    // metodos para actualizar las animaciones y los movimeintos
+    private void AnimationUpdate()
+    {
+        float targetRunMult = ((pi.run) ? 2.0f : 1.0f);
+        //                                  The interpolated float result between the two float values
+        anim.SetFloat("forward", pi.Dmag * Mathf.Lerp(anim.GetFloat("forward"), targetRunMult, 0.5f));
+
+        if (pi.Dmag > 0.1f)
+        {
+            Vector3 targetForward = Vector3.Slerp(model.transform.forward, pi.Dvec, 0.3f) ; //interpolates between two vectors.
+            // giro del personajes
+            model.transform.forward = targetForward;
+           
+        }
+
+        // jump personaje
+        if (pi.jump)
+        {
+            anim.SetTrigger("jump");
+        }
+
+        //roll state
+        if(rigid.velocity.magnitude > 0f)
+        {
+            anim.SetTrigger("roll");
+        }
     }
 
     private void FixedUpdate()  // 1 / 50
     {
         //rigid.position += movingVect * Time.fixedDeltaTime;
-        rigid.velocity = new Vector3(movingVect.x,rigid.velocity.y,movingVect.z); // añadoir velocidad al personaje
+        rigid.velocity = new Vector3(movingVect.x, rigid.velocity.y, movingVect.z) + thrustVect; // añadoir velocidad al personaje
+        thrustVect = Vector3.zero; // for impulso
+    }
+    /// <summary>
+    /// Jump
+    /// </summary>
+    public void OnJumpEnter()
+    {
+        pi.inputEnable = false;
+        lockMoving = true;
+        thrustVect = new Vector3(0, jumpVelocity, 0);
+    }
+    /// <summary>
+    /// Ground
+    /// </summary>
+    public void IsGround()
+    {
+        //print("Ground");
+        anim.SetBool("isGround", true);
+    }
+
+    public void IsNotGround()
+    {
+        // print("Not Ground");
+        anim.SetBool("isGround", false);
+    }
+
+    public void OnGroundEnter()
+    {
+        pi.inputEnable = true;
+        lockMoving = false;
+    }
+
+    /// <summary>
+    /// Fall animation 
+    /// </summary>
+    public void OnFallEnter()
+    {
+        pi.inputEnable = false;
+        lockMoving = true;
+    }
+    /// <summary>
+    /// Roll anim
+    /// </summary>
+    public void OnRollEnter()
+    {
+        pi.inputEnable = false;
+        lockMoving = true ;
+        thrustVect = new Vector3(rollVelocity + 5, 0, 0);
+    }
+
+    public void OnRollUpdate()
+    {
+        thrustVect = model.transform.forward * rollVelocity;
     }
 }
