@@ -54,7 +54,7 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         //
-        Jup = (Input.GetKey(keyJup) ? 1.0f : 0) - (Input.GetKey(keyJright) ? 1.0f : 0);
+        Jup = (Input.GetKey(keyJup) ? 1.0f : 0) - (Input.GetKey(keyJdown) ? 1.0f : 0);
         Jright = (Input.GetKey(keyJright) ? 1.0f : 0) - (Input.GetKey(keyJleft) ? 1.0f : 0);
         //Entrada de la coordenado x and y 
         targetDup = (Input.GetKey(keyUp) ? 1.0f : 0) - (Input.GetKey(keyDown) ? 1.0f : 0);
