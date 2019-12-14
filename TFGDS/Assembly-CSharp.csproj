@@ -68,8 +68,11 @@
     <Compile Include="Assets\Scripts\FMS\FSMOnExit.cs" />
     <Compile Include="Assets\Scripts\FMS\FSMOnUpdate.cs" />
     <Compile Include="Assets\Scripts\Helper\camaraContoller.cs" />
+    <Compile Include="Assets\Scripts\Helper\ResetTriggerInput.cs" />
+    <Compile Include="Assets\Scripts\Helper\RootMontionControl.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatoContoller.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Player\UserInput.cs" />
     <Compile Include="Assets\Scripts\Sensor\OnGroundSensor.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/proyectoUnity/UnityTFG/TFGDS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

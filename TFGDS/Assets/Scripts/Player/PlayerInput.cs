@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerInput : MonoBehaviour
+//https://gameprogrammingpatterns.com/contents.html
+public class PlayerInput : UserInput
 {
     [Header("======== Key Setting ========")]
     //Variables para entrada de teclados
@@ -21,29 +21,6 @@ public class PlayerInput : MonoBehaviour
     public string keyJleft;
     public string keyJright;
     
-
-    [Header("======== Output Señal ========")]
-    public float Dup;
-    public float Dright;
-    public float Dmag;
-    public Vector3 Dvec; // vector 3 para el giro del personaje segun la entrada
-    public float Jup;
-    public float Jright;
-
-
-    public bool run;
-    public bool jump;
-    private bool lastJump;
-
-    [Header("======== Otros ========")]
-    public bool inputEnable = true; // varibale para comprobar si puede recibir señal o no
-
-
-    // variables para smoothdamp
-    private float targetDup;
-    private float targetDright;
-    private float velocityDup;
-    private float velocityDright;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,18 +56,10 @@ public class PlayerInput : MonoBehaviour
 
         run = Input.GetKey(keyA);
         Jump();
+        Attack();
     }
-
-    //http://squircular.blogspot.com/2015/09/mapping-circle-to-square.html
-    private Vector2 SquareToCircle(Vector2 inputArea)
-    {
-        Vector2 output = Vector2.zero;
-
-        output.x = inputArea.x * Mathf.Sqrt(1 - (inputArea.y * inputArea.y) / 2.0f);
-        output.y = inputArea.y * Mathf.Sqrt(1 - (inputArea.x * inputArea.x) / 2.0f);
-        return output;
-    }
-
+   
+    //jump input
     void Jump()
     {
         bool tempJump = Input.GetKey(keyB);
@@ -103,6 +72,22 @@ public class PlayerInput : MonoBehaviour
             jump = false;
         }
         lastJump = tempJump;
+
+    }
+    //attack input 
+    void Attack()
+    {
+        bool tempAttack = Input.GetKey(keyC);
+        //print(tempAttack);
+        if (tempAttack != lastAtttack && tempAttack == true)
+        {
+            attack = true;
+        }
+        else
+        {
+            attack = false;
+        }
+        lastAtttack = tempAttack;
 
     }
 }

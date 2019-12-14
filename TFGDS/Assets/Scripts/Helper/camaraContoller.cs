@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class camaraContoller : MonoBehaviour
 {
-    public PlayerInput pi; // entrada del player
+    public UserInput pi; // entrada del player
     public float horizontalSpeed = 20.0f; // velocidad para eje horizontal
     public float verticalSpeed = 80.0f; // velocidada para el eje vertical;
     public float camaraDappValue = 0.5f;
@@ -22,7 +22,7 @@ public class camaraContoller : MonoBehaviour
     {
         camaraHandler = transform.parent.gameObject;
         player = camaraHandler.transform.parent.gameObject;
-        pi = player.GetComponent<PlayerInput>();
+        pi = player.GetComponent<UserInput>();
         tempEulex = 20;
         model = player.GetComponent<AnimatoContoller>().model;
         camara = Camera.main;
@@ -35,7 +35,7 @@ public class camaraContoller : MonoBehaviour
 
         player.transform.Rotate(Vector3.up, pi.Jright * horizontalSpeed * Time.fixedDeltaTime); // se mueve el objeto`player por el axi horizontal
         //camaraHandler.transform.Rotate(Vector3.right, pi.Jup * verticalSpeed * Time.deltaTime); // se mueve la camara  por axis vertical
-        tempEulex -= pi.Jup * verticalSpeed * Time.deltaTime; // se resta ya que se mueve del sentido contratrio;
+        tempEulex -= pi.Jup * verticalSpeed * Time.fixedDeltaTime; // se resta ya que se mueve del sentido contratrio;
         tempEulex = Mathf.Clamp(tempEulex, -40, 30); // maximo angulo de rotacion
         camaraHandler.transform.localEulerAngles = new Vector3(tempEulex,0,0);
         // asiganr el euler angulo de ese momento del update
