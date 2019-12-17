@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\FMS\FSMOnExit.cs" />
     <Compile Include="Assets\Scripts\FMS\FSMOnUpdate.cs" />
     <Compile Include="Assets\Scripts\Helper\camaraContoller.cs" />
+    <Compile Include="Assets\Scripts\Helper\LeftArmAnimFix.cs" />
     <Compile Include="Assets\Scripts\Helper\ResetTriggerInput.cs" />
     <Compile Include="Assets\Scripts\Helper\RootMontionControl.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatoContoller.cs" />

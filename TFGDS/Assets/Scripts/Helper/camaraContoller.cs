@@ -26,6 +26,8 @@ public class camaraContoller : MonoBehaviour
         tempEulex = 20;
         model = player.GetComponent<AnimatoContoller>().model;
         camara = Camera.main;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class camaraContoller : MonoBehaviour
 
         //asigno las posicion del camaraPos al posiicon de la camara main
         camara.transform.position = Vector3.SmoothDamp(camara.transform.position, transform.position, ref camaraDampVelocity, camaraDappValue);
-        camara.transform.eulerAngles = transform.eulerAngles;
-        //camara.transform.LookAt(camaraHandler.transform);
+        //camara.transform.eulerAngles = transform.eulerAngles;
+        camara.transform.LookAt(camaraHandler.transform);
     }
 }

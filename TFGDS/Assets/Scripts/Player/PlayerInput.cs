@@ -12,15 +12,18 @@ public class PlayerInput : UserInput
     public string keyRight;
 
     public string keyA; // almace run 
-    public string keyB;
-    public string keyC;
-    public string keyD;
+    public string keyB; // jump
+    public string keyC; // attack
+    public string keyD; // defense
     //key <- , -> ..
     public string keyJup;
     public string keyJdown;
     public string keyJleft;
     public string keyJright;
-    
+
+    [Header("======== Mouse Setting ========")]
+    public float mouseSensX = 1.0f;
+    public float mouseSensY = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +34,10 @@ public class PlayerInput : UserInput
     void Update()
     {
         //
-        Jup = (Input.GetKey(keyJup) ? 1.0f : 0) - (Input.GetKey(keyJdown) ? 1.0f : 0);
-        Jright = (Input.GetKey(keyJright) ? 1.0f : 0) - (Input.GetKey(keyJleft) ? 1.0f : 0);
+        //Jup = (Input.GetKey(keyJup) ? 1.0f : 0) - (Input.GetKey(keyJdown) ? 1.0f : 0);
+        // Jright = (Input.GetKey(keyJright) ? 1.0f : 0) - (Input.GetKey(keyJleft) ? 1.0f : 0);
+        Jup = Input.GetAxis("Mouse Y")  * mouseSensX;
+        Jright = Input.GetAxis("Mouse X")  * mouseSensX;
         //Entrada de la coordenado x and y 
         targetDup = (Input.GetKey(keyUp) ? 1.0f : 0) - (Input.GetKey(keyDown) ? 1.0f : 0);
         targetDright = (Input.GetKey(keyRight) ? 1.0f : 0) - (Input.GetKey(keyLeft) ? 1.0f : 0);
@@ -55,6 +60,7 @@ public class PlayerInput : UserInput
         Dvec = Dright * transform.right + Dup * transform.forward; // giro del personakes
 
         run = Input.GetKey(keyA);
+        defense = Input.GetKey(keyD);
         Jump();
         Attack();
     }
@@ -90,4 +96,6 @@ public class PlayerInput : UserInput
         lastAtttack = tempAttack;
 
     }
+
+   
 }

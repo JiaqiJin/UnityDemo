@@ -13,6 +13,8 @@ public abstract class UserInput : MonoBehaviour
 
 
     public bool run;
+    public bool defense;
+
     public bool jump;
     protected bool lastJump;
     public bool attack;

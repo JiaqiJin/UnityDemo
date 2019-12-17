@@ -37,7 +37,8 @@ public class AnimatoContoller : MonoBehaviour
     // Update is called once per frame
     void Update() // 1 / 60
     {
-          AnimationUpdate();
+         AnimationUpdate();
+
         if(lockMoving == false)
         {
             // vector  que alamacena la veclocidad 
@@ -79,7 +80,10 @@ public class AnimatoContoller : MonoBehaviour
             anim.SetTrigger("attack");
         }
 
-       // print(CheckState("idle", "attack"));
+        // defense
+        anim.SetBool("defense", pi.defense);
+        //anim.SetBool("defense", true);
+        // print(CheckState("idle", "attack"));
     }
 
     private void FixedUpdate()  // 1 / 50
@@ -202,6 +206,7 @@ public class AnimatoContoller : MonoBehaviour
         //print(deltaPos);
         if(CheckState("attack1hC", "attack") || (CheckState("roll")))
         {
+            thrustVect = Vector3.zero;
             deltaPos += animDeltaPos;
         }
         
