@@ -19,7 +19,7 @@ public abstract class UserInput : MonoBehaviour
     protected bool lastJump;
     public bool attack;
     protected bool lastAtttack;
-
+    public bool lockon;
 
     [Header("======== Otros ========")]
     public bool inputEnable = true; // varibale para comprobar si puede recibir señal o no

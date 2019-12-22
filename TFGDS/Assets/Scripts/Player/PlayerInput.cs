@@ -15,6 +15,7 @@ public class PlayerInput : UserInput
     public string keyB; // jump
     public string keyC; // attack
     public string keyD; // defense
+    public string keyE; // key lock
     //key <- , -> ..
     public string keyJup;
     public string keyJdown;
@@ -61,6 +62,7 @@ public class PlayerInput : UserInput
 
         run = Input.GetKey(keyA);
         defense = Input.GetKey(keyD);
+        lockon = Input.GetKey(keyE);
         Jump();
         Attack();
     }

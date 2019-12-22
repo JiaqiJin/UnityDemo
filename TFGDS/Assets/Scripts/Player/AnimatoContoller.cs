@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimatoContoller : MonoBehaviour
 {
     public GameObject model;
+    public camaraContoller camcom;
     public UserInput pi;
     public float walkSpeed = 1.4f;
     public float runMultiplier;
@@ -32,6 +33,7 @@ public class AnimatoContoller : MonoBehaviour
         anim = model.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
+        //camcom = GetComponent<camaraContoller>();
     }
 
     // Update is called once per frame
@@ -84,6 +86,12 @@ public class AnimatoContoller : MonoBehaviour
         anim.SetBool("defense", pi.defense);
         //anim.SetBool("defense", true);
         // print(CheckState("idle", "attack"));
+
+        // lock target
+        if (pi.lockon)
+        {
+            camcom.lockUnlockTarget();
+        }
     }
 
     private void FixedUpdate()  // 1 / 50
