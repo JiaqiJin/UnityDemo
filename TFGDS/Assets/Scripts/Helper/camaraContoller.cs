@@ -16,12 +16,12 @@ public class camaraContoller : MonoBehaviour
     private GameObject camaraHandler; // objeto camara
     private float tempEulex; // variable temporar para la el angulo euler de la camara;
     private GameObject model;
-    private Camera camara; // variable para alamacenar la camara principal
+    private GameObject camara; // variable para alamacenar la camara principal
 
      
     private Vector3 camaraDampVelocity;
     [SerializeField]
-    private GameObject lockTarget;
+    private LockTarget lockTarget;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class camaraContoller : MonoBehaviour
         pi = ac.pi;
         tempEulex = 20;
         model = ac.model;
-        camara = Camera.main;
+        camara = Camera.main.gameObject;
         lockIcon.enabled = false;
         lockState = false;
 
@@ -57,9 +57,11 @@ public class camaraContoller : MonoBehaviour
         // gira la pa pos del objeto
         else
         {
-            Vector3 tempForward = lockTarget.transform.position - model.transform.position;
+            Vector3 tempForward = lockTarget.obj.transform.position - model.transform.position;
             tempForward.y = 0;
             player.transform.forward = tempForward;
+            //camaraHandler.transform
+            camaraHandler.transform.LookAt(lockTarget.obj.transform);
         }
 
        
@@ -70,20 +72,37 @@ public class camaraContoller : MonoBehaviour
         camara.transform.LookAt(camaraHandler.transform);
     }
 
+    void Update()
+    {
+        if(lockTarget != null)
+        {
+            //print
+            lockIcon.rectTransform.position = Camera.main.WorldToScreenPoint(lockTarget.obj.transform.position );
+            if (Vector3.Distance(model.transform.position, lockTarget.obj.transform.position) > 10.0f)
+            {
+                lockTarget = null;
+                lockIcon.enabled = false;
+                lockState = false;
+            }
+        }
+       
+    }
+
     public void lockUnlockTarget()
     {
         //print("asd");
-        //if(lockTarget == null)
-        //{
+        //
+        //
             // lock
             Vector3 modelOrigin1 = model.transform.position;
             //print(modelOrigin1);
             Vector3 modelOrigin2 = modelOrigin1 + new Vector3(0, 1, 0);
-            Vector3 boxCenter = modelOrigin2 + model.transform.forward * 5.0f;
-            Collider[] cols = Physics.OverlapBox(boxCenter, new Vector3(0.5f, 0.5f, 5f), model.transform.rotation, LayerMask.GetMask("Enemy"));
+            Vector3 CenterLapbox = modelOrigin2 + model.transform.forward * 5.0f;
+            Collider[] cols = Physics.OverlapBox(CenterLapbox, new Vector3(0.5f, 0.5f, 5.0f), model.transform.rotation, LayerMask.GetMask("Enemy"));
 
         if(cols.Length == 0)
         {
+            //print(cols.ToString());
             lockTarget = null;
             lockIcon.enabled = false;
             lockState = false;
@@ -91,8 +110,9 @@ public class camaraContoller : MonoBehaviour
 
         else {
             foreach (var col in cols)
-            { 
-                if(lockTarget == col.gameObject)
+            {
+                //print(col.name);
+                if(lockTarget != null && lockTarget.obj == col.gameObject)
                 {
                     lockTarget = null;
                     lockIcon.enabled = false;
@@ -101,7 +121,7 @@ public class camaraContoller : MonoBehaviour
                     break;
                 }
                 //print(col.name);
-                lockTarget = col.gameObject;
+                lockTarget =new LockTarget( col.gameObject,col.bounds.extents.y);
                 lockIcon.enabled = true;
                 lockState = true;
                 //lockIcon.transform.position = Camera.main.WorldToScreenPoint(lockTarget.transform.position);
@@ -121,4 +141,17 @@ public class camaraContoller : MonoBehaviour
             //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
          Gizmos.DrawLine(transform.position, transform.localScale);
     }*/
+
+    private class LockTarget
+    {
+        public GameObject obj;
+        public float halfHeigt;
+
+        public LockTarget(GameObject obj_,float hal)
+        {
+            this.obj = obj_;
+            this.halfHeigt = hal;
+        }
+
+    }
 }

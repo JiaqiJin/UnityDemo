@@ -16,6 +16,8 @@ public class PlayerInput : UserInput
     public string keyC; // attack
     public string keyD; // defense
     public string keyE; // key lock
+    public string keyF; // 
+    public string keyG; // 
     //key <- , -> ..
     public string keyJup;
     public string keyJdown;

@@ -24,8 +24,11 @@ public class AnimatoContoller : MonoBehaviour
     private CapsuleCollider col;
     private float lerpTarget;
     private Vector3 deltaPos;
+    private bool trackDir; 
 
     private bool lockMoving = false;
+
+    private bool leftShiled = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -52,8 +55,24 @@ public class AnimatoContoller : MonoBehaviour
     private void AnimationUpdate()
     {
         float targetRunMult = ((pi.run) ? 2.0f : 1.0f);
-        //                                  The interpolated float result between the two float values
-        anim.SetFloat("forward", pi.Dmag * Mathf.Lerp(anim.GetFloat("forward"), targetRunMult, 0.5f));
+        
+            //                                  The interpolated float result between the two float values
+            anim.SetFloat("forward", pi.Dmag * Mathf.Lerp(anim.GetFloat("forward"), targetRunMult, 0.5f));
+            anim.SetFloat("right", 0);
+        
+//        else
+ //       {
+ //           Vector3 localVect = transform.InverseTransformDirection(pi.Dvec);
+//            anim.SetFloat("forward", localVect.z * targetRunMult);
+ //           anim.SetFloat("right", localVect.x * targetRunMult);
+ //       }
+        
+        
+
+        if (camcom.lockState == false)
+        {
+
+        }
 
         if (pi.Dmag > 0.1f)
         {
@@ -77,13 +96,16 @@ public class AnimatoContoller : MonoBehaviour
         }
 
         //attack
-        if (pi.attack && canAttack && CheckState("ground"))
+        if ((pi.attack && (CheckState("ground") || CheckStateTag("attackR") || CheckStateTag("attackL")) && canAttack))
+        //if(pi.attack && )
         {
             anim.SetTrigger("attack");
         }
 
-        // defense
-        anim.SetBool("defense", pi.defense);
+       
+         anim.SetBool("defense", pi.defense);
+        
+        
         //anim.SetBool("defense", true);
         // print(CheckState("idle", "attack"));
 
@@ -92,6 +114,17 @@ public class AnimatoContoller : MonoBehaviour
         {
             camcom.lockUnlockTarget();
         }
+
+        /*if (camcom.lockState)
+        {
+            if (!trackDir)
+                model.transform.forward = transform.forward;
+            else
+                model.transform.forward = movingVect.normalized;
+        }
+        */
+        // defense
+        
     }
 
     private void FixedUpdate()  // 1 / 50
@@ -102,11 +135,18 @@ public class AnimatoContoller : MonoBehaviour
         thrustVect = Vector3.zero; // for impulso
         deltaPos = Vector3.zero;
     }
-
+    //metodo para comprobar el estado de la animacion
     public bool CheckState(string stateName, string layerName = "Base Layer" )
     {
         int layerIndex_ = anim.GetLayerIndex(layerName);
         bool output = anim.GetCurrentAnimatorStateInfo(layerIndex_).IsName(stateName);
+        return output;
+    }
+    //Metodos para comprobar el tag de la animacion
+    public bool CheckStateTag(string tagName, string layerName = "Base Layer")
+    {
+        int layerIndex_ = anim.GetLayerIndex(layerName);
+        bool output = anim.GetCurrentAnimatorStateInfo(layerIndex_).IsTag(tagName);
         return output;
     }
 
@@ -118,6 +158,7 @@ public class AnimatoContoller : MonoBehaviour
         pi.inputEnable = false;
         lockMoving = true;
         thrustVect = new Vector3(0, jumpVelocity, 0);
+        trackDir = true;
     }
     /// <summary>
     /// Ground
@@ -141,6 +182,7 @@ public class AnimatoContoller : MonoBehaviour
         lockMoving = false;
         canAttack = true;
         col.material = FrictionOne;
+        trackDir = true;
     }
 
     public void OnGroundExit()
@@ -155,6 +197,7 @@ public class AnimatoContoller : MonoBehaviour
     {
         pi.inputEnable = false;
         lockMoving = true;
+        trackDir = true;
     }
     /// <summary>
     /// Roll anim
@@ -180,14 +223,7 @@ public class AnimatoContoller : MonoBehaviour
         lerpTarget = 1.0f;
         //anim.SetLayerWeight(anim.GetLayerIndex("attack"), 1.0f);
     }
-
-    public void OnAttackIdle()
-    {
-        pi.inputEnable = true;
-        //lockMoving = false;
-        lerpTarget = 0;
-        //anim.SetLayerWeight(anim.GetLayerIndex("attack"), 0);
-    }
+ 
 
     public void OnAttack1AUpdate()
     {
@@ -201,22 +237,39 @@ public class AnimatoContoller : MonoBehaviour
 
     public void OnAttackIdleUpdate()
     {
-        float currentWeight = anim.GetLayerWeight(anim.GetLayerIndex("attack")); // cambio de peso con interpolacion
+        /*float currentWeight = anim.GetLayerWeight(anim.GetLayerIndex("attack")); // cambio de peso con interpolacion
         currentWeight = Mathf.Lerp(currentWeight, lerpTarget, 0.1f);
         //print(currentWeight)
-        anim.SetLayerWeight(anim.GetLayerIndex("attack"), lerpTarget);
+        anim.SetLayerWeight(anim.GetLayerIndex("attack"), lerpTarget);*/
 
+    }
+
+    public void OnAttackExit()
+    {
+        anim.gameObject.SendMessage("WeaponDisable");
     }
 
     //
     public void OnAnimatorUpdateRM(Vector3 animDeltaPos)
     {
         //print(deltaPos);
-        if(CheckState("attack1hC", "attack") || (CheckState("roll")))
+        if(CheckState("attack1hC") || (CheckState("roll")))
         {
             thrustVect = Vector3.zero;
             deltaPos += animDeltaPos;
+            
         }
         
+    }
+
+    public void OnHitEnter()
+    {
+        pi.inputEnable = false;
+        //movingVect = Vector3.zero;
+    }
+
+    public void IssueTrigger(string triggerName)
+    {
+        anim.SetTrigger(triggerName);
     }
 }
