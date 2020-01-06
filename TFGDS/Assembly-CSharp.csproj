@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\JSON\JSONObject.cs" />
+    <Compile Include="Assets\JSON\VectorTemplates.cs" />
     <Compile Include="Assets\Scripts\FMS\FMSClearSignal.cs" />
     <Compile Include="Assets\Scripts\FMS\FSMOnEnter.cs" />
     <Compile Include="Assets\Scripts\FMS\FSMOnExit.cs" />
@@ -72,6 +74,17 @@
     <Compile Include="Assets\Scripts\Helper\ResetTriggerInput.cs" />
     <Compile Include="Assets\Scripts\Helper\RootMontionControl.cs" />
     <Compile Include="Assets\Scripts\Helper\TransformFinder.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item\Consumible.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item\Equipment.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item\Item.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item\Material.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Item\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Knapsack.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Manager\InventoryManager.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Slot\ItemUI.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Slot\Slot.cs" />
+    <Compile Include="Assets\Scripts\Inventory\TestInventory.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimatorManager.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleManager.cs" />
     <Compile Include="Assets\Scripts\Manager\WeaponManager.cs" />
@@ -80,6 +93,7 @@
     <Compile Include="Assets\Scripts\Player\UserInput.cs" />
     <Compile Include="Assets\Scripts\Sensor\OnGroundSensor.cs" />
     <Compile Include="Assets\Scripts\Sensor\WeaponController.cs" />
+    <None Include="Assets\JSON\readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/proyectoUnity/UnityTFG/TFGDS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -295,6 +309,9 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.13f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>E:/proyectoUnity/UnityTFG/TFGDS/Assets/Plugins/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>E:/proyectoUnity/UnityTFG/TFGDS/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>

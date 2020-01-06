@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "name": "hp_flask",
+    "type": "Consumible",
+    "quality": "Common",
+    "description": "aumenta el hp",
+    "capacity": 10,
+    "buyPrice": 10,
+    "sellPrice": 5,
+    "hp": 10,
+    "mp": 0,
+    "sprite": "Sprites/Items/hp"
+  }
+]

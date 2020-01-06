@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class TransformFinder
 {
-
+    //Metodos para encontrar objetos que hereda de un objetos utilizando backtraking
     public static Transform DeepFind(this Transform parent, string targetName) {
 
         Transform tempTrans = null;

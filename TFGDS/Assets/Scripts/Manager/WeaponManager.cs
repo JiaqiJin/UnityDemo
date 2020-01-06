@@ -33,7 +33,7 @@ public class WeaponManager : MonoBehaviour
     public void WeaponDisable()
     {
         weaponColR.enabled = false;
-        weaponColL.enabled = false;
+        //weaponColL.enabled = false;
     }
     public void WeaponEnable()
     {
