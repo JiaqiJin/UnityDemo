@@ -24,6 +24,7 @@ public class Consumible : Item
         s += ItemType;
         s += BuyPrice;
         s += Sellprice;
+        s += Sprite;
         s += MP;
         s += HP;
 

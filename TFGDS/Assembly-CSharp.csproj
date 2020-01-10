@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Inventory\Slot\ItemUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\Slot\Slot.cs" />
     <Compile Include="Assets\Scripts\Inventory\TestInventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ToolTips.cs" />
     <Compile Include="Assets\Scripts\Manager\AnimatorManager.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleManager.cs" />
     <Compile Include="Assets\Scripts\Manager\WeaponManager.cs" />

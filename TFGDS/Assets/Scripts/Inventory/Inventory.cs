@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private Slot[] slotLIst;
+    private Slot[] slotList;
 
     // Start is called before the first frame update
     public virtual void Start()
-    {        
-        slotLIst = GetComponentsInChildren<Slot>();
+    {
+        slotList = GetComponentsInChildren<Slot>();
     }
 
     public bool StoreItem(int id)
@@ -68,7 +68,7 @@ public class Inventory : MonoBehaviour
     /// <returns></returns>
     private Slot FindEmptySlot()
     {
-        foreach (Slot slot in slotLIst)
+        foreach (Slot slot in slotList)
         {
             if(slot.transform.childCount == 0)
             {
@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
 
     private Slot FindSameTypeSlot(Item item)
     {
-        foreach(Slot slot in slotLIst)
+        foreach(Slot slot in slotList)
         {
             if(slot.transform.childCount >= 1 && slot.GetItemType() == item.ItemType && slot.IsFilled() == false)
             {

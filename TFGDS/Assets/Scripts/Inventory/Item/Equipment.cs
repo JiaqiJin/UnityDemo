@@ -25,13 +25,16 @@ public class Equipment : Item
 
 public enum EquipmentType
 {
+    None,
     Head,
     Neck,
+    Chest,
     Ring,
     Leg,
     Bracer,
     Boots,
     Shoulder,
-    OffHand,
-        
+    Belt,
+    OffHand
+
 }

@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     public GameObject itemPrefabs;
-
+    //public ItemUI ItemUI;
     /// <summary>
     /// meter objetos de slots
     /// si hay objetos amout ++;
@@ -45,4 +46,19 @@ public class Slot : MonoBehaviour
         return itemUI.Amount >= itemUI.Item.Capacity;
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (transform.childCount > 0)
+            InventoryManager.Instance.HideToolTip();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if(transform.childCount > 0)
+        {
+            string toolTipText = transform.GetChild(0).GetComponent<ItemUI>().Item.GetToolTipText();
+            InventoryManager.Instance.ShowToolTip(toolTipText);
+        }
+       
+    }
 }

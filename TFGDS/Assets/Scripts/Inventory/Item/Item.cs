@@ -40,5 +40,13 @@ public class Item
         this.Sellprice = sellPrice;
         this.Sprite = sprites;
     }
+    /// <summary>
+    /// mostrar contenidos
+    /// </summary>
+    /// <returns></returns>
+    public virtual string GetToolTipText()
+    {
+        return Name;
+    } 
 }
 

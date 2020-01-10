@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": 1,
     "name": "hp_flask",
@@ -11,5 +11,18 @@
     "hp": 10,
     "mp": 0,
     "sprite": "Sprites/Items/hp"
+  },
+  {
+    "id": 2,
+    "name": "mp_flask",
+    "type": "Consumible",
+    "quality": "Common",
+    "description": "aumenta el mp",
+    "capacity": 10,
+    "buyPrice": 10,
+    "sellPrice": 5,
+    "hp": 0,
+    "mp": 10,
+    "sprite": "Sprites/Items/mp"
   }
 ]

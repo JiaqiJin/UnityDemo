@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     #region
@@ -27,9 +28,26 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     private List<Item> itemList;
 
+    private ToolTips tooltip;
+
+    private bool isToolTipShow;
+
+    private Canvas canvas;
     private void Start()
     {
         ParseItemJson();
+        tooltip = GameObject.FindObjectOfType<ToolTips>();
+        //canvas = GameObject.Find("Canva").GetComponent<Canvas>();
+    }
+
+    private void Update()
+    {
+        /*if (isToolTipShow)
+        {
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null,out position);
+            tooltip.SetLocalPos(position);
+        }*/
     }
 
     void ParseItemJson()
@@ -47,7 +65,8 @@ public class InventoryManager : MonoBehaviour
             string typeStr = item["type"].str;
             //print(typeStr);
             ItemType type = (ItemType)System.Enum.Parse(typeof(ItemType), typeStr);
-            int ID = (int)(item["id"].n);
+
+            int id = (int)(item["id"].n);
             string name = item["name"].str;
 
             string qualityStr = item["quality"].str;
@@ -55,8 +74,9 @@ public class InventoryManager : MonoBehaviour
             int capacity = (int)(item["capacity"].n);
             int buyPrice = (int)(item["buyPrice"].n);
             int sellPrice = (int)(item["sellPrice"].n);
-            string description = item["description"].str;
             string sprite = item["sprite"].str;
+            string description = item["description"].str;
+            
 
             Item newItem = null;
             switch (type)
@@ -64,12 +84,21 @@ public class InventoryManager : MonoBehaviour
                 case ItemType.Consumible:
                     int hp = (int)(item["hp"].n);
                     int mp = (int)(item["mp"].n);
-                    newItem = new Consumible(ID, name, type,quality, description, capacity, buyPrice, sellPrice, sprite, hp, mp);
+                    newItem = new Consumible(id, name, type,quality, description, capacity, buyPrice, sellPrice, sprite, hp, mp);
+                    break;
+                case ItemType.Equipment:
+                    //TODO
+                    break;
+                case ItemType.Weapon:
+                    //TODO
+                    break;
+                case ItemType.Material:
+                    //TODO
                     break;
 
             }
             itemList.Add(newItem);
-            //Debug.Log(itemList.ToString());
+            //Debug.Log(newItem);
         }
     }
 
@@ -83,5 +112,17 @@ public class InventoryManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void ShowToolTip(string content)
+    {
+        isToolTipShow = true;
+        tooltip.Show(content);
+    }
+
+    public void HideToolTip()
+    {
+        isToolTipShow = false;
+        tooltip.Hide();
     }
 }
