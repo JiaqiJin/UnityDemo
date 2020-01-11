@@ -37,7 +37,7 @@ public class InventoryManager : MonoBehaviour
     {
         ParseItemJson();
         tooltip = GameObject.FindObjectOfType<ToolTips>();
-        //canvas = GameObject.Find("Canva").GetComponent<Canvas>();
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
     }
 
     private void Update()
@@ -88,6 +88,12 @@ public class InventoryManager : MonoBehaviour
                     break;
                 case ItemType.Equipment:
                     //TODO
+                    int strength = (int)(item["strength"].n);
+                    int intellect = (int)(item["intellect"].n);
+                    int agility = (int)(item["agility"].n);
+                    int stamina = (int)(item["stamina"].n);
+                    EquipmentType equipType = (EquipmentType)System.Enum.Parse(typeof(EquipmentType), item["equipType"].str);
+                    newItem = new Equipment(id, name, type,quality, description, capacity, buyPrice, sellPrice, sprite, strength, intellect, agility, stamina, equipType);
                     break;
                 case ItemType.Weapon:
                     //TODO
@@ -114,15 +120,15 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
-    public void ShowToolTip(string content)
+   /* public void ShowToolTip(string content)
     {
         isToolTipShow = true;
         tooltip.Show(content);
-    }
+    }*/
 
-    public void HideToolTip()
+    /*public void HideToolTip()
     {
         isToolTipShow = false;
         tooltip.Hide();
-    }
+    }*/
 }

@@ -10,8 +10,8 @@ public class TestInventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Debug.Log("press o");
-            int id = Random.Range(1,2);
+            //Debug.Log("press o");
+            int id = Random.Range(1,13);
             Knapsack.Instance.StoreItem(id);
         } 
     }

@@ -12,7 +12,7 @@ public enum ItemType
 public enum Quality
 {
     Common,
-    Uncommom,
+    Uncommon,
     Rare,
     Epic,
     Legendary
