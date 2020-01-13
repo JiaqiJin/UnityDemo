@@ -24,6 +24,11 @@ public class PlayerInput : UserInput
     public string keyJleft;
     public string keyJright;
 
+    public MyButton buttonA = new MyButton();
+    public MyButton buttonB = new MyButton();
+    public MyButton buttonC = new MyButton();
+    public MyButton buttonD = new MyButton();
+
     [Header("======== Mouse Setting ========")]
     public float mouseSensX = 1.0f;
     public float mouseSensY = 1.0f;
@@ -36,6 +41,16 @@ public class PlayerInput : UserInput
     // Update is called once per frame
     void Update()
     {
+
+        buttonA.Tick(Input.GetKey(keyA));
+        buttonB.Tick(Input.GetKey(keyB));
+        buttonC.Tick(Input.GetKey(keyC));
+        buttonD.Tick(Input.GetKey(keyD));
+
+        //print(buttonA.IsPressing);
+        //print(buttonA.IsExteding && buttonA.OnPressed);
+
+
         //
         //Jup = (Input.GetKey(keyJup) ? 1.0f : 0) - (Input.GetKey(keyJdown) ? 1.0f : 0);
         // Jright = (Input.GetKey(keyJright) ? 1.0f : 0) - (Input.GetKey(keyJleft) ? 1.0f : 0);
@@ -62,17 +77,18 @@ public class PlayerInput : UserInput
         Dmag = Mathf.Sqrt((Dup2 * Dup2) + (Dright2 * Dright2)); // movimiento del personajes
         Dvec = Dright * transform.right + Dup * transform.forward; // giro del personakes
 
-        run = Input.GetKey(keyA);
-        defense = Input.GetKey(keyD);
+        run = (buttonA.IsPressing && !buttonA.IsDelaying) || buttonA.IsExteding;
+        defense = buttonD.IsPressing;
         lockon = Input.GetKey(keyE);
-        Jump();
         Attack();
+        roll = buttonB.OnReleased && buttonB.IsDelaying;
+        jump = buttonB.IsPressing && buttonB.IsDelaying && buttonA.IsPressing;
     }
    
     //jump input
     void Jump()
     {
-        bool tempJump = Input.GetKey(keyB);
+        /*bool tempJump = Input.GetKey(keyB);
         if (tempJump != lastJump && tempJump == true)
         {
             jump = true;
@@ -81,13 +97,13 @@ public class PlayerInput : UserInput
         {
             jump = false;
         }
-        lastJump = tempJump;
-
+        lastJump = tempJump;*/
+        // jump  y forward less 1.1
     }
     //attack input 
     void Attack()
     {
-        bool tempAttack = Input.GetKey(keyC);
+       /* bool tempAttack = Input.GetKey(keyC);
         //print(tempAttack);
         if (tempAttack != lastAtttack && tempAttack == true)
         {
@@ -97,7 +113,7 @@ public class PlayerInput : UserInput
         {
             attack = false;
         }
-        lastAtttack = tempAttack;
+        lastAtttack = tempAttack;*/
 
     }
 

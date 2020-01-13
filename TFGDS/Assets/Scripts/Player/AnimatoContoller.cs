@@ -90,9 +90,10 @@ public class AnimatoContoller : MonoBehaviour
         }
 
         //roll state
-        if(rigid.velocity.magnitude > 0f)
+        if(pi.roll ||rigid.velocity.magnitude > 7f)
         {
             anim.SetTrigger("roll");
+            canAttack = false;
         }
 
         //attack
@@ -102,8 +103,11 @@ public class AnimatoContoller : MonoBehaviour
             anim.SetTrigger("attack");
         }
 
-       
-         anim.SetBool("defense", pi.defense);
+        if (!pi.run)
+        {
+            anim.SetBool("defense", pi.defense);
+        }
+         
         
         
         //anim.SetBool("defense", true);
@@ -253,7 +257,7 @@ public class AnimatoContoller : MonoBehaviour
     public void OnAnimatorUpdateRM(Vector3 animDeltaPos)
     {
         //print(deltaPos);
-        if(CheckState("attack1hC") || (CheckState("roll")))
+        if(CheckState("attack1hC"))
         {
             thrustVect = Vector3.zero;
             deltaPos += animDeltaPos;

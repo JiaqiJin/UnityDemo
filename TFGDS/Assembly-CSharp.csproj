@@ -73,6 +73,8 @@
     <Compile Include="Assets\Scripts\Helper\LeftArmAnimFix.cs" />
     <Compile Include="Assets\Scripts\Helper\ResetTriggerInput.cs" />
     <Compile Include="Assets\Scripts\Helper\RootMontionControl.cs" />
+    <Compile Include="Assets\Scripts\Helper\Time\MyButton.cs" />
+    <Compile Include="Assets\Scripts\Helper\Time\Timer.cs" />
     <Compile Include="Assets\Scripts\Helper\TransformFinder.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item\Consumible.cs" />
