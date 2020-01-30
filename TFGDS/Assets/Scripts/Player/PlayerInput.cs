@@ -103,7 +103,7 @@ public class PlayerInput : UserInput
     //attack input 
     void Attack()
     {
-       /* bool tempAttack = Input.GetKey(keyC);
+        bool tempAttack = Input.GetKey(keyC);
         //print(tempAttack);
         if (tempAttack != lastAtttack && tempAttack == true)
         {
@@ -113,7 +113,7 @@ public class PlayerInput : UserInput
         {
             attack = false;
         }
-        lastAtttack = tempAttack;*/
+        lastAtttack = tempAttack;
 
     }
 
