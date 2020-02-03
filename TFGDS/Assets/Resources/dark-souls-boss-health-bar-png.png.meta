@@ -1,0 +1,417 @@
+fileFormatVersion: 2
+guid: e1f1b7d96ef4d5447a4a32f60330f828
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: dark-souls-boss-health-bar-png_0
+    21300002: dark-souls-boss-health-bar-png_1
+    21300004: dark-souls-boss-health-bar-png_2
+    21300006: dark-souls-boss-health-bar-png_3
+    21300008: dark-souls-boss-health-bar-png_4
+    21300010: dark-souls-boss-health-bar-png_5
+    21300012: dark-souls-boss-health-bar-png_6
+    21300014: dark-souls-boss-health-bar-png_7
+    21300016: dark-souls-boss-health-bar-png_8
+    21300018: dark-souls-boss-health-bar-png_9
+    21300020: dark-souls-boss-health-bar-png_10
+    21300022: dark-souls-boss-health-bar-png_11
+    21300024: dark-souls-boss-health-bar-png_12
+    21300026: dark-souls-boss-health-bar-png_13
+    21300028: dark-souls-boss-health-bar-png_14
+    21300030: dark-souls-boss-health-bar-png_15
+    21300032: dark-souls-boss-health-bar-png_16
+    21300034: dark-souls-boss-health-bar-png_17
+    21300036: dark-souls-boss-health-bar-png_18
+    21300038: dark-souls-boss-health-bar-png_19
+    21300040: dark-souls-boss-health-bar-png_20
+    21300042: dark-souls-boss-health-bar-png_21
+    21300044: dark-souls-boss-health-bar-png_22
+    21300046: dark-souls-boss-health-bar-png_23
+    21300048: dark-souls-boss-health-bar-png_24
+    21300050: dark-souls-boss-health-bar-png_25
+    21300052: dark-souls-boss-health-bar-png_26
+    21300054: dark-souls-boss-health-bar-png_27
+    21300056: dark-souls-boss-health-bar-png_28
+    21300058: dark-souls-boss-health-bar-png_29
+    21300060: dark-souls-boss-health-bar-png_30
+    21300062: dark-souls-boss-health-bar-png_31
+    21300064: dark-souls-boss-health-bar-png_32
+    21300066: dark-souls-boss-health-bar-png_33
+    21300068: dark-souls-boss-health-bar-png_34
+    21300070: dark-souls-boss-health-bar-png_35
+    21300072: dark-souls-boss-health-bar-png_36
+    21300074: dark-souls-boss-health-bar-png_37
+    21300076: dark-souls-boss-health-bar-png_38
+    21300078: dark-souls-boss-health-bar-png_39
+    21300080: dark-souls-boss-health-bar-png_40
+    21300082: dark-souls-boss-health-bar-png_41
+    21300084: dark-souls-boss-health-bar-png_42
+    21300086: dark-souls-boss-health-bar-png_43
+    21300088: dark-souls-boss-health-bar-png_44
+    21300090: dark-souls-boss-health-bar-png_45
+    21300092: dark-souls-boss-health-bar-png_46
+    21300094: dark-souls-boss-health-bar-png_47
+    21300096: dark-souls-boss-health-bar-png_48
+    21300098: dark-souls-boss-health-bar-png_49
+    21300100: dark-souls-boss-health-bar-png_50
+    21300102: dark-souls-boss-health-bar-png_51
+    21300104: dark-souls-boss-health-bar-png_52
+    21300106: dark-souls-boss-health-bar-png_53
+    21300108: dark-souls-boss-health-bar-png_54
+    21300110: dark-souls-boss-health-bar-png_55
+    21300112: dark-souls-boss-health-bar-png_56
+    21300114: dark-souls-boss-health-bar-png_57
+    21300116: dark-souls-boss-health-bar-png_58
+    21300118: dark-souls-boss-health-bar-png_59
+    21300120: dark-souls-boss-health-bar-png_60
+    21300122: dark-souls-boss-health-bar-png_61
+    21300124: dark-souls-boss-health-bar-png_62
+    21300126: dark-souls-boss-health-bar-png_63
+    21300128: dark-souls-boss-health-bar-png_64
+    21300130: dark-souls-boss-health-bar-png_65
+    21300132: dark-souls-boss-health-bar-png_66
+    21300134: dark-souls-boss-health-bar-png_67
+    21300136: dark-souls-boss-health-bar-png_68
+    21300138: dark-souls-boss-health-bar-png_69
+    21300140: dark-souls-boss-health-bar-png_70
+    21300142: dark-souls-boss-health-bar-png_71
+    21300144: dark-souls-boss-health-bar-png_72
+    21300146: dark-souls-boss-health-bar-png_73
+    21300148: dark-souls-boss-health-bar-png_74
+    21300150: dark-souls-boss-health-bar-png_75
+    21300152: dark-souls-boss-health-bar-png_76
+    21300154: dark-souls-boss-health-bar-png_77
+    21300156: dark-souls-boss-health-bar-png_78
+    21300158: dark-souls-boss-health-bar-png_79
+    21300160: dark-souls-boss-health-bar-png_80
+    21300162: dark-souls-boss-health-bar-png_81
+    21300164: dark-souls-boss-health-bar-png_82
+    21300166: dark-souls-boss-health-bar-png_83
+    21300168: dark-souls-boss-health-bar-png_84
+    21300170: dark-souls-boss-health-bar-png_85
+    21300172: dark-souls-boss-health-bar-png_86
+    21300174: dark-souls-boss-health-bar-png_87
+    21300176: dark-souls-boss-health-bar-png_88
+    21300178: dark-souls-boss-health-bar-png_89
+    21300180: dark-souls-boss-health-bar-png_90
+    21300182: dark-souls-boss-health-bar-png_91
+    21300184: dark-souls-boss-health-bar-png_92
+    21300186: dark-souls-boss-health-bar-png_93
+    21300188: dark-souls-boss-health-bar-png_94
+    21300190: dark-souls-boss-health-bar-png_95
+    21300192: dark-souls-boss-health-bar-png_96
+    21300194: dark-souls-boss-health-bar-png_97
+    21300196: dark-souls-boss-health-bar-png_98
+    21300198: dark-souls-boss-health-bar-png_99
+    21300200: dark-souls-boss-health-bar-png_100
+    21300202: dark-souls-boss-health-bar-png_101
+    21300204: dark-souls-boss-health-bar-png_102
+    21300206: dark-souls-boss-health-bar-png_103
+    21300208: dark-souls-boss-health-bar-png_104
+    21300210: dark-souls-boss-health-bar-png_105
+    21300212: dark-souls-boss-health-bar-png_106
+    21300214: dark-souls-boss-health-bar-png_107
+    21300216: dark-souls-boss-health-bar-png_108
+    21300218: dark-souls-boss-health-bar-png_109
+    21300220: dark-souls-boss-health-bar-png_110
+    21300222: dark-souls-boss-health-bar-png_111
+    21300224: dark-souls-boss-health-bar-png_112
+    21300226: dark-souls-boss-health-bar-png_113
+    21300228: dark-souls-boss-health-bar-png_114
+    21300230: dark-souls-boss-health-bar-png_115
+    21300232: dark-souls-boss-health-bar-png_116
+    21300234: dark-souls-boss-health-bar-png_117
+    21300236: dark-souls-boss-health-bar-png_118
+    21300238: dark-souls-boss-health-bar-png_119
+    21300240: dark-souls-boss-health-bar-png_120
+    21300242: dark-souls-boss-health-bar-png_121
+    21300244: dark-souls-boss-health-bar-png_122
+    21300246: dark-souls-boss-health-bar-png_123
+    21300248: dark-souls-boss-health-bar-png_124
+    21300250: dark-souls-boss-health-bar-png_125
+    21300252: dark-souls-boss-health-bar-png_126
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 274
+        width: 287
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f1824226db8d6d4eba6d3d6c522b2df
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 27
+        width: 1020
+        height: 484
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4088c0d8d8502418c39f76e42deedc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 256
+        width: 66
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4141a340a62dcbb49a6e41c96834cc68
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_3
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 241
+        width: 66
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac563c3733eded40b9152722e2beae8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 225
+        width: 66
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8286dc44d6561d140bba995d648f19c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_5
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 208
+        width: 66
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06ecdbdbeb69fd499baf96b42090fe7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 191
+        width: 66
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9c4a37f168396d439ac9deb5ef9c2f6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 116
+        width: 64
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1fcd0270025044698b6d977712028d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark-souls-boss-health-bar-png_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 836
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f4ba20011dc44d4f966b99fcac784f5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 6a4dc5c4166bb8a44bc1ec5ec910fba8
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

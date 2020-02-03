@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="Assets\JSON\JSONObject.cs" />
     <Compile Include="Assets\JSON\VectorTemplates.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AISystem\AIState.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AISystem\AIStateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy\SimpleEnemy\SimpleEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\SimpleEnemy\SimpleEnemyWithAnim.cs" />
     <Compile Include="Assets\Scripts\FMS\FMSClearSignal.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Assets\Scripts\FMS\FSMOnExit.cs" />
     <Compile Include="Assets\Scripts\FMS\FSMOnUpdate.cs" />
     <Compile Include="Assets\Scripts\Helper\camaraContoller.cs" />
+    <Compile Include="Assets\Scripts\Helper\GameSceneManager.cs" />
     <Compile Include="Assets\Scripts\Helper\LeftArmAnimFix.cs" />
     <Compile Include="Assets\Scripts\Helper\ResetTriggerInput.cs" />
     <Compile Include="Assets\Scripts\Helper\RootMontionControl.cs" />
@@ -95,6 +98,8 @@
     <Compile Include="Assets\Scripts\Manager\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\Player\AnimatoContoller.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerUI\PlayerBar.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerUI\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Player\UserInput.cs" />
     <Compile Include="Assets\Scripts\Sensor\OnGroundSensor.cs" />
     <Compile Include="Assets\Scripts\Sensor\WeaponController.cs" />
@@ -308,6 +313,9 @@
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.13f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="Vuforia.UnityExtensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.13f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GoogleAudioSpatializer">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.13f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
