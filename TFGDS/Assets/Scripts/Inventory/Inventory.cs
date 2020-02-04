@@ -18,7 +18,11 @@ public class Inventory : MonoBehaviour
         return StoreItem(item);
     }
     
-
+    /// <summary>
+    /// Funcion para salavr items
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     public bool StoreItem(Item item)
     {
         if(item == null)
@@ -77,7 +81,11 @@ public class Inventory : MonoBehaviour
         }
         return null;
     }
-
+    /// <summary>
+    /// Funcion para encontrar el mismo huecos
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     private Slot FindSameIdSlot(Item item)
     {
         foreach(Slot slot in slotList)

@@ -123,10 +123,10 @@
   },
   {
     "id": 10,
-    "name": "戒指",
+    "name": "ring",
     "type": "Equipment",
     "quality": "Uncommon",
-    "description": "很厉害的戒指",
+    "description": "good ring",
     "capacity": 1,
     "buyPrice": 20,
     "sellPrice": 20,
@@ -139,10 +139,10 @@
   },
   {
     "id": 11,
-    "name": "裤子",
+    "name": "pants",
     "type": "Equipment",
     "quality": "Common",
-    "description": "很厉害的裤子",
+    "description": "fashion pants",
     "capacity": 1,
     "buyPrice": 40,
     "sellPrice": 20,
@@ -155,10 +155,10 @@
   },
   {
     "id": 12,
-    "name": "护肩",
+    "name": "shoulder",
     "type": "Equipment",
     "quality": "Common",
-    "description": "很厉害的护肩",
+    "description": "good shoulder",
     "capacity": 1,
     "buyPrice": 100,
     "sellPrice": 20,
@@ -168,6 +168,66 @@
     "agility": 4,
     "stamina": 4,
     "equipType": "Shoulder"
+  },
+
+  {
+    "id": 13,
+    "name": "axe",
+    "type": "Weapon",
+    "quality": "Rare",
+    "description": "stone axe",
+    "capacity": 1,
+    "buyPrice": 50,
+    "sellPrice": 20,
+    "sprite": "Sprites/Items/axe",
+    "damage": 100,
+    "weaponType": "MainHand"
+  },
+  {
+    "id": 14,
+    "name": "sword",
+    "type": "Weapon",
+    "quality": "Rare",
+    "description": "stone sword",
+    "capacity": 1,
+    "buyPrice": 15,
+    "sellPrice": 5,
+    "sprite": "Sprites/Items/sword",
+    "damage": 20,
+    "weaponType": "OffHand"
+  },
+  {
+    "id": 15,
+    "name": "axe recipie",
+    "type": "Material",
+    "quality": "Common",
+    "description": "craft axe",
+    "capacity": 2,
+    "buyPrice": 50,
+    "sellPrice": 10,
+    "sprite": "Sprites/Items/scroll"
+  },
+  {
+    "id": 16,
+    "name": "helmet recipie",
+    "type": "Material",
+    "quality": "Common",
+    "description": "craft helmet",
+    "capacity": 2,
+    "buyPrice": 50,
+    "sellPrice": 10,
+    "sprite": "Sprites/Items/scroll"
+  },
+  {
+    "id": 17,
+    "name": "hierro",
+    "type": "Material",
+    "quality": "Common",
+    "description": "craft items",
+    "capacity": 20,
+    "buyPrice": 5,
+    "sellPrice": 4,
+    "sprite": "Sprites/Items/ingots"
   }
 
 ]

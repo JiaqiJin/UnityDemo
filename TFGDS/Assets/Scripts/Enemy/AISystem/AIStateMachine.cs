@@ -96,6 +96,72 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
-    
+    protected virtual void Start()
+    {
+        AIState[] states = GetComponents<AIState>();
+
+        foreach (AIState state in states)
+        {
+            if (state != null && !state_.ContainsKey(state.GetStateType()))
+            {
+                state_[state.GetStateType()] = state;
+            }
+        }
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        VisualThreat.Clear();
+        if (target_.type != AITargetType.None)
+        {
+            target_.distance = Vector3.Distance(transform_.position, target_.position);
+        }
+
+    }
+
+    // setter al current objeto target
+    public void SetTarget(AITargetType t, Collider c, Vector3 p, float d)
+    {
+        target_.Set(t, c, p, d);
+
+        if (targetTrigger_ != null)
+        {
+            targetTrigger_.radius = stoppingDistance_;
+            targetTrigger_.transform.position = target_.position;
+            targetTrigger_.enabled = true;
+        }
+    }
+    // setter al current objeto target y le psasa el radio
+    public void SetTarget(AITargetType t, Collider c, Vector3 p, float d, float s)
+    {
+        target_.Set(t, c, p, d);
+
+        if (targetTrigger_ != null)
+        {
+            targetTrigger_.radius = s;
+            targetTrigger_.transform.position = target_.position;
+            targetTrigger_.enabled = true;
+        }
+    }
+
+    public void SetTarget(AITarget t)
+    {
+        target_ = t;
+        if (targetTrigger_ != null)
+        {
+            targetTrigger_.radius = stoppingDistance_;
+            targetTrigger_.transform.position = target_.position;
+            targetTrigger_.enabled = true;
+        }
+    }
+
+    public void Clear()
+    {
+        target_.Clear();
+        if (targetTrigger_ != null)
+        {
+            targetTrigger_.enabled = false;
+        }
+    }
 
 }

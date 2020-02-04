@@ -46,7 +46,11 @@ public class Item
     /// <returns></returns>
     public virtual string GetToolTipText()
     {
-        return Name;
+        string text = "";
+        text += Name + "\n";
+        text += Description + "\n";
+        text += "Prices : " + BuyPrice + "Sell price : " + Sellprice + "\n";
+        return text;
     } 
 }
 

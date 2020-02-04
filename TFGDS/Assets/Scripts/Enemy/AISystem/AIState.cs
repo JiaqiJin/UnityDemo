@@ -6,6 +6,6 @@ public abstract class AIState : MonoBehaviour
 {
 
     //metosods abstractos
-   
+    public abstract AIStateType GetStateType();
 
 }

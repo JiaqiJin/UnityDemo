@@ -97,9 +97,13 @@ public class InventoryManager : MonoBehaviour
                     break;
                 case ItemType.Weapon:
                     //TODO
+                    int damage = (int)(item["damage"].n);
+                    WeaponType wpType = (WeaponType)System.Enum.Parse(typeof(WeaponType), item["weaponType"].str);
+                    newItem = new Weapon(id, name, type, quality, description, capacity, buyPrice, sellPrice, sprite, damage, wpType);
                     break;
                 case ItemType.Material:
                     //TODO
+                    newItem = new Material(id, name, type, quality, description, capacity, buyPrice, sellPrice, sprite);
                     break;
 
             }
