@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
-    #region
+    #region InventoryManager
     private static InventoryManager instance_;
 
     public static InventoryManager Instance
@@ -33,11 +33,27 @@ public class InventoryManager : MonoBehaviour
     private bool isToolTipShow;
 
     private Canvas canvas;
+
+    private bool isPickItem = false;
+
+    public bool IsPickItem { get { return isPickItem; } set { isPickItem = value; } }
+
+    //[SerializeField]
+    private ItemUI pickItem; // mouse click objecto
+
+    //getter
+    public ItemUI PickItem
+    {
+        get { return pickItem; }
+    }
+
     private void Start()
     {
         ParseItemJson();
         tooltip = GameObject.FindObjectOfType<ToolTips>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        pickItem = GameObject.Find("PickItem").GetComponent<ItemUI>();
+        pickItem.Hide();
     }
 
     private void Update()
