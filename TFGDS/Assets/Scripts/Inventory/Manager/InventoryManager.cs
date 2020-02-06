@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour
 
     private bool isPickItem = false;
 
-    public bool IsPickItem { get { return isPickItem; } set { isPickItem = value; } }
+    public bool IsPickItem { get { return isPickItem; }  }
 
     //[SerializeField]
     private ItemUI pickItem; // mouse click objecto
@@ -64,8 +64,19 @@ public class InventoryManager : MonoBehaviour
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null,out position);
             tooltip.SetLocalPos(position);
         }*/
-    }
+        //si cogemos el objeto 
+        if (isPickItem)
+        {
+            Vector2 pos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
+                Input.mousePosition, null, out pos);
+            pickItem.SetLocalPosition(pos);
+        }
 
+    }
+    /// <summary>
+    /// Funcion que parsea fichero .json
+    /// </summary>
     void ParseItemJson()
     {
         itemList = new List<Item>();
@@ -140,15 +151,27 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
-   /* public void ShowToolTip(string content)
-    {
-        isToolTipShow = true;
-        tooltip.Show(content);
-    }*/
+    /* public void ShowToolTip(string content)
+     {
+         isToolTipShow = true;
+         tooltip.Show(content);
+     }*/
 
     /*public void HideToolTip()
     {
         isToolTipShow = false;
         tooltip.Hide();
     }*/
+
+    /// <summary>
+    /// Funcion para coger objeto del inventario 
+    /// </summary>
+    /// <param name="itemUI"></param>
+    public void PickUpItem(Item item, int amout)
+    {
+        PickItem.SetItem(item, amout);
+        PickItem.Show();
+        isPickItem = true;
+    }
+
 }

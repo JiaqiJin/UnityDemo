@@ -51,23 +51,31 @@ public class ItemUI : MonoBehaviour
         else
             AmountText.text = "";
     }
+    public void SetAmount(int amount)
+    {
+        this.Amount = amount;
+        if (Item.Capacity > 1)
+            AmountText.text = Amount.ToString();
+        else
+            AmountText.text = "";
+    }
+
     //funcion para sumar cantidad del objeto
     public void AddAmount(int amount = 1)
     {
         this.Amount += amount;
-       
-        AmountText.text = Amount.ToString();
+
+        if (Item.Capacity > 1)
+            AmountText.text = Amount.ToString();
+        else
+            AmountText.text = "";
     }
     //funcion para restar cantidad del objeto
     public void SubAmount(int amount)
     {
         this.Amount -= amount;
     }
-    //Seeter del item UI
-    public void SetItemUI(ItemUI itemUI)
-    {
-        SetItem(itemUI.Item, itemUI.Amount);
-    }
+
 
     private void Update()
     {
@@ -86,6 +94,8 @@ public class ItemUI : MonoBehaviour
 
     public void SetLocalPosition(Vector3 position)
     {
-        transform.localScale = position;
+        transform.localPosition = position;
     }
+
+ 
 }

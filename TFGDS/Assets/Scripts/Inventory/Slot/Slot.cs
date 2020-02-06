@@ -63,7 +63,10 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
         }
        
     }
-
+    /// <summary>
+    /// Funcion que retorna id del objeto Item
+    /// </summary>
+    /// <returns></returns>
     public int GetItemId()
     {
         return transform.GetChild(0).GetComponent<ItemUI>().Item.ID;
@@ -87,15 +90,24 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
              //si no ha escogido ningun objketo con el raton
             if(InventoryManager.Instance.IsPickItem == false)
             {
-                if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(KeyCode.LeftControl)) // coger la mitad del objeto actual
                 {
-
+                    int amountPicked = (currentItem.Amount + 1) / 2;
+                    InventoryManager.Instance.PickUpItem(currentItem.Item, amountPicked);
+                    int amoutRemain = currentItem.Amount - amountPicked;
+                    if(amoutRemain <= 0) // si no le queda destruye el objeto
+                    {
+                        Destroy(currentItem.gameObject);
+                    }
+                    else
+                    {
+                        currentItem.SetAmount(amoutRemain);
+                    }
                 }
                 else
-                {                   
+                {
                     //coger el info objeto actual del slot al pickItem siguiendo el mouse
-                    InventoryManager.Instance.PickItem.SetItemUI(currentItem);
-                    InventoryManager.Instance.IsPickItem = true;
+                    InventoryManager.Instance.PickUpItem(currentItem.Item, currentItem.Amount);
                     Destroy(currentItem.gameObject); // destruir el objeto que ha escogido
                 }
             }
