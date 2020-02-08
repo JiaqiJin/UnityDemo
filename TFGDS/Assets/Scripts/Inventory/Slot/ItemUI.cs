@@ -40,9 +40,26 @@ public class ItemUI : MonoBehaviour
     }
     #endregion
 
+
+    private float targetScale = 1.0f;
+    //variable para animacion del objeto cuando lo invoca
+    private Vector3 animationScale = new Vector3(1.2f, 1.2f, 1.2f);
+    
+    private void Update()
+    {
+        //amoutText.text = this.amoutText.ToString();
+        if(transform.localScale.x != targetScale) 
+        {
+            //aumento del tamaño del imagen simulando una animacion
+            float scale = Mathf.Lerp(transform.localScale.x, targetScale, 1 * Time.deltaTime);
+            transform.localScale = new Vector3(scale, scale, scale);
+        }
+    }
+
     //funcion para resetar el objeto de la casilla(imagen y la cantidad)
     public void SetItem(Item item, int amount = 1)
     {
+        transform.localScale = animationScale;
         this.Item = item;
         this.Amount = amount;
         ItemImage.sprite = Resources.Load<Sprite>(item.Sprite);
@@ -53,6 +70,7 @@ public class ItemUI : MonoBehaviour
     }
     public void SetAmount(int amount)
     {
+        transform.localScale = animationScale;
         this.Amount = amount;
         if (Item.Capacity > 1)
             AmountText.text = Amount.ToString();
@@ -63,6 +81,7 @@ public class ItemUI : MonoBehaviour
     //funcion para sumar cantidad del objeto
     public void AddAmount(int amount = 1)
     {
+        transform.localScale = animationScale;
         this.Amount += amount;
 
         if (Item.Capacity > 1)
@@ -71,15 +90,15 @@ public class ItemUI : MonoBehaviour
             AmountText.text = "";
     }
     //funcion para restar cantidad del objeto
-    public void SubAmount(int amount)
+    public void SubAmount(int amount = 1)
     {
+        transform.localScale = animationScale;
         this.Amount -= amount;
-    }
 
-
-    private void Update()
-    {
-        //amoutText.text = this.amoutText.ToString();
+        if(Item.Capacity > 1)
+            AmountText.text = Amount.ToString();
+        else
+            AmountText.text = "";
     }
 
     public void Show()

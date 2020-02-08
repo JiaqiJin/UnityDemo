@@ -21,10 +21,11 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
         {
            GameObject itemGameObject = Instantiate(itemPrefabs) as GameObject;
             itemGameObject.transform.SetParent(this.transform);
+            itemGameObject.transform.localScale = Vector3.one;
             itemGameObject.transform.localPosition = Vector3.zero;
             itemGameObject.GetComponent<ItemUI>().SetItem(item);
         }
-
+        // sumar la cantidad del item
         else
         {
             transform.GetChild(0).GetComponent<ItemUI>().AddAmount();
@@ -50,18 +51,19 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //if (transform.childCount > 0)
-            //InventoryManager.Instance.HideToolTip();
+       
+        /*if (transform.childCount > 0)
+        {
+            string toolTipText = transform.GetChild(0).GetComponent<ItemUI>().Item.GetToolTipText();
+            InventoryManager.Instance.ShowToolTip(toolTipText);
+        }*/
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(transform.childCount > 0)
-        {
-            //string toolTipText = transform.GetChild(0).GetComponent<ItemUI>().Item.GetToolTipText();
-            //InventoryManager.Instance.ShowToolTip(toolTipText);
-        }
-       
+       /* if (transform.childCount > 0)
+            InventoryManager.Instance.HideToolTip();*/
+
     }
     /// <summary>
     /// Funcion que retorna id del objeto Item
@@ -110,6 +112,73 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
                     InventoryManager.Instance.PickUpItem(currentItem.Item, currentItem.Amount);
                     Destroy(currentItem.gameObject); // destruir el objeto que ha escogido
                 }
+            }
+            else
+            {
+                if(currentItem.Item.ID == InventoryManager.Instance.PickItem.Item.ID)
+                {
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        if(currentItem.Item.Capacity > currentItem.Amount) // comprobar la capacidad el objeto actual esta lleno o no
+                        {
+                            currentItem.AddAmount();
+                            InventoryManager.Instance.RemoveItem();
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    // si no ha pulsado control pusde deja una parte del objeto en la casilla o todo los objetos
+                    else
+                    {
+                        if(currentItem.Item.Capacity > currentItem.Amount)
+                        {
+                            int amoutRemaint = currentItem.Item.Capacity - currentItem.Amount; // la capasidad que le queda del slot
+                            if(amoutRemaint >= InventoryManager.Instance.PickItem.Amount) // si todavia le queda capacidad para el objetos del inventario
+                            {
+                                // cantidad actual mas cantidad que nos queda en la manao
+                                currentItem.SetAmount(currentItem.Amount + InventoryManager.Instance.PickItem.Amount);
+                                InventoryManager.Instance.RemoveItem(InventoryManager.Instance.PickItem.Amount);
+                            }
+                            else
+                            {
+                                currentItem.SetAmount(currentItem.Amount + amoutRemaint);
+                                InventoryManager.Instance.RemoveItem(amoutRemaint);
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        // si es vacio la casilla 
+        else
+        {
+            if(InventoryManager.Instance.IsPickItem == true)
+            {
+                if (Input.GetKey(KeyCode.LeftControl)) // si pulsa control 
+                {
+                    // almacenar el item en la casilla
+                    this.StoreItem(InventoryManager.Instance.PickItem.Item);
+                    InventoryManager.Instance.RemoveItem();
+                }
+                else
+                {
+                    // alamace todo los objetos 
+                    for(int i = 0; i < InventoryManager.Instance.PickItem.Amount; i++)
+                    {
+                        this.StoreItem(InventoryManager.Instance.PickItem.Item);
+                    }
+                    InventoryManager.Instance.RemoveItem(InventoryManager.Instance.PickItem.Amount);
+                }
+            }
+            else
+            {
+                return;
             }
         }
 

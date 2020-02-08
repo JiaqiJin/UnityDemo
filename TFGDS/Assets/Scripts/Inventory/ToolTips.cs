@@ -6,48 +6,49 @@ using UnityEngine.UI;
 public class ToolTips : MonoBehaviour
 {
 
-    private Text toolTiopText;
-    private Text contextText;
+    private Text toolTipText;
+    private Text foregroundText;
+    private Vector3 offset = new Vector3(15, -10, 0);
+
     private CanvasGroup canvasGroup;
+    private float targetAlpha = 0f;
+    private float alphaSpeed = 0.25f;
 
-    public float smooth = 1;
-
-    private float targetAlpha = 0;
     // Start is called before the first frame update
     void Start()
     {
-        toolTiopText = GetComponent<Text>();
-        contextText = transform.Find("Content").GetComponent<Text>();
+        toolTipText = GetComponent<Text>();
+        foregroundText = transform.Find("Content").GetComponent<Text>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(canvasGroup.alpha != targetAlpha)
+        if (canvasGroup.alpha != targetAlpha)
         {
-            canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, smooth * Time.deltaTime);
-            if(Mathf.Abs(canvasGroup.alpha - targetAlpha) < 0.01f)
+            canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, alphaSpeed);
+            if (Mathf.Abs(canvasGroup.alpha - targetAlpha) <= 0.001f)
             {
                 canvasGroup.alpha = targetAlpha;
             }
         }
     }
 
-    public void Hide()
-    {
-        targetAlpha = 0;
-    }
 
     public void Show(string text)
     {
-        toolTiopText.text = text;
-        contextText.text = text;
-        targetAlpha = 1;
+        toolTipText.text = text;
+        foregroundText.text = text;
+        targetAlpha = 1f;
     }
 
-    public void SetLocalPos(Vector2 position)
+    public void Hide()
     {
-        transform.localScale = position;
+        targetAlpha = 0f;
+    }
+
+    public void SetPos(Vector3 pos)
+    {
+        transform.localPosition = offset + pos;
     }
 }

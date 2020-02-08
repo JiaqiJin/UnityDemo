@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
     }
     
     /// <summary>
-    /// Funcion para salavr items
+    /// Funcion para guardar items
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>

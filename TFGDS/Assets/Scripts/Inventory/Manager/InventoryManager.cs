@@ -30,7 +30,7 @@ public class InventoryManager : MonoBehaviour
 
     private ToolTips tooltip;
 
-    private bool isToolTipShow;
+    private bool isToolTipShow = false;
 
     private Canvas canvas;
 
@@ -58,13 +58,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        /*if (isToolTipShow)
-        {
-            Vector2 position;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null,out position);
-            tooltip.SetLocalPos(position);
-        }*/
-        //si cogemos el objeto 
+        //si cogemos el objeto mueve la posicion del objety a la posicion del raton
         if (isPickItem)
         {
             Vector2 pos;
@@ -72,7 +66,13 @@ public class InventoryManager : MonoBehaviour
                 Input.mousePosition, null, out pos);
             pickItem.SetLocalPosition(pos);
         }
-
+        else if (isToolTipShow)
+        {
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
+               Input.mousePosition, null, out position);
+            tooltip.SetPos(position);
+        }
     }
     /// <summary>
     /// Funcion que parsea fichero .json
@@ -151,17 +151,17 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
-    /* public void ShowToolTip(string content)
+     public void ShowToolTip(string content)
      {
          isToolTipShow = true;
          tooltip.Show(content);
-     }*/
+     }
 
-    /*public void HideToolTip()
+    public void HideToolTip()
     {
         isToolTipShow = false;
         tooltip.Hide();
-    }*/
+    }
 
     /// <summary>
     /// Funcion para coger objeto del inventario 
@@ -172,6 +172,16 @@ public class InventoryManager : MonoBehaviour
         PickItem.SetItem(item, amout);
         PickItem.Show();
         isPickItem = true;
+    }
+    
+    public void RemoveItem(int amount = 1)
+    {
+        PickItem.SubAmount(amount);
+        if (PickItem.Amount <= 0)
+        {
+            isPickItem = false;
+            PickItem.Hide();
+        }
     }
 
 }
