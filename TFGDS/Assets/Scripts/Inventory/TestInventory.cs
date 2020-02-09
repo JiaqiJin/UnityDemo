@@ -14,6 +14,12 @@ public class TestInventory : MonoBehaviour
             //int id = Random.Range(1,18);
             int id = Random.Range(1, 3);
             Knapsack.Instance.StoreItem(id);
-        } 
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Knapsack.Instance.DisplaySwitch();
+            Chest.Instance.DisplaySwitch();
+        }
     }
 }

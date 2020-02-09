@@ -115,7 +115,7 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
             }
             else
             {
-                if(currentItem.Item.ID == InventoryManager.Instance.PickItem.Item.ID)
+                if(currentItem.Item.ID == InventoryManager.Instance.PickItem.Item.ID) // si conincide los objetos en la casilla
                 {
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
@@ -152,6 +152,14 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
                             return;
                         }
                     }
+                }
+                // cambios de objetos en la casilla
+                else
+                {
+                    Item item = currentItem.Item;
+                    int amount = currentItem.Amount;
+                    currentItem.SetItem(InventoryManager.Instance.PickItem.Item, InventoryManager.Instance.PickItem.Amount);
+                    InventoryManager.Instance.PickItem.SetItem(item, amount);
                 }
             }
         }

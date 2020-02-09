@@ -42,6 +42,10 @@ public class PlayerInput : UserInput
     void Update()
     {
 
+        if(Knapsack.Instance.CanvasGroups.alpha != 1)
+        {
+
+        }
         buttonA.Tick(Input.GetKey(keyA));
         buttonB.Tick(Input.GetKey(keyB));
         buttonC.Tick(Input.GetKey(keyC));

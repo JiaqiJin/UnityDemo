@@ -42,9 +42,14 @@ public class AnimatoContoller : MonoBehaviour
     // Update is called once per frame
     void Update() // 1 / 60
     {
-         AnimationUpdate();
+        if(Knapsack.Instance.CanvasGroups.alpha != 1)
+        {
+            AnimationUpdate();
+            thrustVect = Vector3.zero;
+        }
+         
 
-        if(lockMoving == false)
+        if(lockMoving == false && Knapsack.Instance.CanvasGroups.alpha != 1)
         {
             // vector  que alamacena la veclocidad 
             movingVect = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run) ? runMultiplier : 1.0f);
@@ -133,11 +138,15 @@ public class AnimatoContoller : MonoBehaviour
 
     private void FixedUpdate()  // 1 / 50
     {
-        rigid.position += deltaPos; // OnAnimatorUpdateRM y fixedUpdate no es de mismo tiempo
-        //rigid.position += movingVect * Time.fixedDeltaTime;
-        rigid.velocity = new Vector3(movingVect.x, rigid.velocity.y, movingVect.z) + thrustVect; // añadoir velocidad al personaje
-        thrustVect = Vector3.zero; // for impulso
-        deltaPos = Vector3.zero;
+        if(Knapsack.Instance.CanvasGroups.alpha != 1)
+        {
+            rigid.position += deltaPos; // OnAnimatorUpdateRM y fixedUpdate no es de mismo tiempo
+                                        //rigid.position += movingVect * Time.fixedDeltaTime;
+            rigid.velocity = new Vector3(movingVect.x, rigid.velocity.y, movingVect.z) + thrustVect; // añadoir velocidad al personaje
+            thrustVect = Vector3.zero; // for impulso
+            deltaPos = Vector3.zero;
+        }
+        
     }
     //metodo para comprobar el estado de la animacion
     public bool CheckState(string stateName, string layerName = "Base Layer" )
@@ -257,11 +266,10 @@ public class AnimatoContoller : MonoBehaviour
     public void OnAnimatorUpdateRM(Vector3 animDeltaPos)
     {
         //print(deltaPos);
-        if(CheckState("attack1hC"))
+        if((CheckState("attack1hC") || CheckState("roll")) && Knapsack.Instance.CanvasGroups.alpha != 1)
         {
             thrustVect = Vector3.zero;
-            deltaPos += animDeltaPos;
-            
+            deltaPos += animDeltaPos;           
         }
         
     }

@@ -73,6 +73,14 @@ public class InventoryManager : MonoBehaviour
                Input.mousePosition, null, out position);
             tooltip.SetPos(position);
         }
+
+        //drop item                                         // comprobar si el raton tiene algun objeto
+        if(isPickItem && Input.GetMouseButtonDown(0) && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1) == false)
+        {
+            isPickItem = false;
+            PickItem.Hide();
+        }
+
     }
     /// <summary>
     /// Funcion que parsea fichero .json

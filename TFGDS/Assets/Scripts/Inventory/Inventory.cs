@@ -6,10 +6,40 @@ public class Inventory : MonoBehaviour
 {
     private Slot[] slotList;
 
+    private float targetAlpha = 1;
+
+    private float smoothing = 4;
+
+    private bool isInventoryOpen;
+
+    public bool IsInventoryOpen
+    {
+        get { return isInventoryOpen; }
+        set { value = isInventoryOpen; }
+    }
+
+    private CanvasGroup canvasGroup;
+
+    public CanvasGroup CanvasGroups { get { return canvasGroup; } }
+
     // Start is called before the first frame update
     public virtual void Start()
     {
         slotList = GetComponentsInChildren<Slot>();
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    private void Update()
+    {
+        if(canvasGroup.alpha != targetAlpha)
+        {
+            canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, smoothing * Time.deltaTime);
+            if(Mathf.Abs(canvasGroup.alpha - targetAlpha ) < 0.1f)
+            {
+                canvasGroup.alpha = targetAlpha;                
+            }
+           
+        }
     }
 
     public bool StoreItem(int id)
@@ -96,6 +126,40 @@ public class Inventory : MonoBehaviour
             }
         }
         return null;
+    }
+
+    /// <summary>
+    /// Mostrar inventario
+    /// // si blockrayscast es verdad  se interactual con el panel 
+    /// </summary>
+    public void Show()
+    {
+        targetAlpha = 1;
+        canvasGroup.blocksRaycasts = true;
+        IsInventoryOpen = true;
+    }
+    /// <summary>
+    /// Ocultar inventario
+    /// // si blockrayscast es falso no se interactual con el panel 
+    /// </summary>
+    public void Hide()
+    {
+        targetAlpha = 0;
+        canvasGroup.blocksRaycasts = false; 
+        isInventoryOpen = false;
+    }
+
+    public void DisplaySwitch()
+    {
+        //print("es " + IsInventoryOpen);
+        if(targetAlpha == 0)
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
     }
 
 }
