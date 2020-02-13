@@ -81,7 +81,7 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
     /// </summary>
     /// <param name="eventData"></param>
     /// 
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         //vacio el slot
      

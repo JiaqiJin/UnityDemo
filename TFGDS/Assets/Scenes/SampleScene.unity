@@ -1168,6 +1168,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
 --- !u!224 &245486232 stripped
@@ -1364,6 +1369,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
@@ -4420,6 +4430,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
 --- !u!224 &847301039 stripped
@@ -5116,6 +5131,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
 --- !u!224 &1247484299 stripped
@@ -5739,6 +5764,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
 --- !u!224 &1334817485 stripped
@@ -6175,7 +6205,7 @@ PrefabInstance:
     - target: {fileID: 3767623716393026007, guid: 78e9b3efdfe0be445ac65a8a476323d8,
         type: 3}
       propertyPath: m_Name
-      value: LeftHandSlot
+      value: MainHandSlot
       objectReference: {fileID: 0}
     - target: {fileID: 3767623716393026000, guid: 78e9b3efdfe0be445ac65a8a476323d8,
         type: 3}
@@ -6281,6 +6311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: weaponType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
@@ -7259,6 +7294,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
 --- !u!224 &1568771721 stripped
@@ -7383,6 +7423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
@@ -9560,6 +9605,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
 --- !u!224 &1872379233 stripped
@@ -10294,6 +10344,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}
 --- !u!224 &2085957535 stripped
@@ -10451,6 +10506,7 @@ GameObject:
   - component: {fileID: 2112158966}
   - component: {fileID: 2112158965}
   - component: {fileID: 2112158963}
+  - component: {fileID: 2112158964}
   m_Layer: 5
   m_Name: CharacterPanel
   m_TagString: Untagged
@@ -10501,6 +10557,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2112158964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112158961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ddebacf08ab22468c503d59e719c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2112158965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10926,6 +10994,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847306808851386056, guid: 78e9b3efdfe0be445ac65a8a476323d8,
+        type: 3}
+      propertyPath: equipmentType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e9b3efdfe0be445ac65a8a476323d8, type: 3}

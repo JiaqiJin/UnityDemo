@@ -2,6 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EquipmentType
+{
+    None,
+    Head,
+    Neck,
+    Chest,
+    Ring,
+    Leg,
+    Bracer,
+    Boots,
+    Shoulder,
+    Belt,
+    OffHand
+
+}
+
 public class Equipment : Item
 {
     public int Strength { get; set; }
@@ -23,18 +39,4 @@ public class Equipment : Item
     }
 }
 
-public enum EquipmentType
-{
-    None,
-    Head,
-    Neck,
-    Chest,
-    Ring,
-    Leg,
-    Bracer,
-    Boots,
-    Shoulder,
-    Belt,
-    OffHand
 
-}

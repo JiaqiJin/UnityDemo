@@ -11,8 +11,8 @@ public class TestInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             //Debug.Log("press o");
-            //int id = Random.Range(1,18);
-            int id = Random.Range(1, 3);
+            int id = Random.Range(1,18);
+            //int id = Random.Range(1, 3);
             Knapsack.Instance.StoreItem(id);
         }
 

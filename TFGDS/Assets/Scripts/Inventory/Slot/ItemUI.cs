@@ -115,6 +115,17 @@ public class ItemUI : MonoBehaviour
     {
         transform.localPosition = position;
     }
+    /// <summary>
+    /// Funcion para cambiar posicion del itemui
+    /// </summary>
+    /// <param name="itemUI"></param>
+    public void Exchange(ItemUI itemUI)
+    {
+        Item tempItem = itemUI.Item;
+        int amount = itemUI.Amount;
+        itemUI.SetItem(this.Item, this.Amount);
+        this.SetItem(tempItem, amount);
 
+    }
  
 }
