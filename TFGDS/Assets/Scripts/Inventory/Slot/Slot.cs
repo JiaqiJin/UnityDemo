@@ -83,6 +83,27 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
     /// 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        // para equipar armadura con pulsando el botton
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if(InventoryManager.Instance.IsPickItem == false && transform.childCount > 0)
+            {
+                ItemUI currenItemUI = transform.GetChild(0).GetComponent<ItemUI>();
+                if(currenItemUI.Item is Equipment || currenItemUI.Item is Weapon)
+                {
+                    currenItemUI.SubAmount(1);
+                    Item currenItem = currenItemUI.Item;
+                    if (currenItemUI.Amount <= 0)
+                    {
+                        DestroyImmediate(currenItemUI.gameObject);
+                    }
+                    CharacterPanel.Instance.PutOn(currenItem); // pasar el objeto itemUI al panel de caracyer
+                    
+                }
+            }
+        }
+
+        if (eventData.button != PointerEventData.InputButton.Left) return; // si es izq button no selecciona objetos
         //vacio el slot
      
         //no vacio el slot compruebo los descendiente del slot

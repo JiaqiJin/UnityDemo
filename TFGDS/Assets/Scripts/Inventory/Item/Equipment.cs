@@ -14,7 +14,8 @@ public enum EquipmentType
     Boots,
     Shoulder,
     Belt,
-    OffHand
+    OffHand,
+    Glove
 
 }
 

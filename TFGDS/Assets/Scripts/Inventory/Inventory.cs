@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private Slot[] slotList;
+    protected Slot[] slotList;
 
     private float targetAlpha = 1;
 

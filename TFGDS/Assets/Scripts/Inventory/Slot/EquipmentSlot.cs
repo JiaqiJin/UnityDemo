@@ -9,7 +9,7 @@ public class EquipmentSlot : Slot
     public EquipmentType equipmentType;
 
 
-    private bool IsRightItem(Item item)
+    public bool IsRightItem(Item item)
     {
         return (item is Weapon && ((Weapon)item).wpType == this.weaponType)
             || (item is Equipment && ((Equipment)item).EquipType == this.equipmentType);
@@ -21,9 +21,24 @@ public class EquipmentSlot : Slot
     /// <param name="eventData"></param>
     public override void OnPointerDown(PointerEventData eventData)
     {
+
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (InventoryManager.Instance.IsPickItem == false && transform.childCount > 0)
+            {
+                ItemUI currenItemUI = transform.GetChild(0).GetComponent<ItemUI>();
+
+                transform.parent.SendMessage("PutOff", currenItemUI.Item);
+                Destroy(currenItemUI.gameObject);
+                
+            }
+        }
+
+
+        if (eventData.button != PointerEventData.InputButton.Left) return; // si es izq button no selecciona objetos
         //base.OnPointerDown(eventData);
         //si tiene objeto 
-        if(InventoryManager.Instance.IsPickItem == true)
+        if (InventoryManager.Instance.IsPickItem == true)
         {
             ItemUI pickItem = InventoryManager.Instance.PickItem;
             if(transform.childCount > 0)
@@ -49,7 +64,12 @@ public class EquipmentSlot : Slot
         //si no contiene ningu objeto
         else
         {
-
+            if(transform.childCount > 0)
+            {
+                ItemUI currentItemUI = transform.GetChild(0).GetComponent<ItemUI>();
+                InventoryManager.Instance.PickUpItem(currentItemUI.Item, currentItemUI.Amount);
+                Destroy(transform.GetChild(0).gameObject);
+            }
         }
 
 
