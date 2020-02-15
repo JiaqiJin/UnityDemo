@@ -75,7 +75,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            Slot slot = FindSameIdSlot(item);
+            Slot slot = FindSameIdSlot(item); 
             if(slot != null)
             {
                 slot.StoreItem(item);

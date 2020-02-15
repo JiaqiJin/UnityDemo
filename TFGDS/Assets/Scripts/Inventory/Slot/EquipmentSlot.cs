@@ -5,10 +5,14 @@ using UnityEngine.EventSystems;
 
 public class EquipmentSlot : Slot
 {
-    public WeaponType weaponType;
-    public EquipmentType equipmentType;
+    public WeaponType weaponType; // tipos de weapons
+    public EquipmentType equipmentType; // tipos de equipment
 
-
+    /// <summary>
+    /// Metodos para comprobar si pertenece al tipo de objeto
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     public bool IsRightItem(Item item)
     {
         return (item is Weapon && ((Weapon)item).wpType == this.weaponType)

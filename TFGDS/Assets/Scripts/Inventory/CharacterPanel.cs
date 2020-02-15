@@ -20,7 +20,10 @@ public class CharacterPanel : Inventory
         }
     }
 
-
+    /// <summary>
+    /// Metodos para poner armaduras en la casilla del player
+    /// </summary>
+    /// <param name="item"></param>
     public void PutOn(Item item)
     {
         Item outItem = null;
@@ -45,7 +48,10 @@ public class CharacterPanel : Inventory
         if(outItem !=null)
         Knapsack.Instance.StoreItem(outItem);
     }
-
+    /// <summary>
+    /// Metodos para remover objeto del playerr
+    /// </summary>
+    /// <param name="item"></param>
     public void PutOff(Item item)
     {
         Knapsack.Instance.StoreItem(item);
