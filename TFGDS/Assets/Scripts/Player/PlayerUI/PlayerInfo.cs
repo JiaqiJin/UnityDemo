@@ -30,9 +30,28 @@ public class PlayerInfo : MonoBehaviour
     private int exp_;
     private int coin_;
     private int power_;
+    private int basicStrength = 10;
+    private int basicIntellect = 10;
+    private int basicAgility = 10;
+
     #endregion
 
     #region gettter setter
+
+    public int BasicStrength
+    {
+        get { return basicStrength; }
+    }
+
+    public int BasicIntellect
+    {
+        get { return basicIntellect; }
+    }
+
+    public int BasicAgility
+    {
+        get { return basicAgility; }
+    }
 
     public string Name
     {

@@ -31,16 +31,20 @@ public class EquipmentSlot : Slot
             if (InventoryManager.Instance.IsPickItem == false && transform.childCount > 0)
             {
                 ItemUI currenItemUI = transform.GetChild(0).GetComponent<ItemUI>();
-
-                transform.parent.SendMessage("PutOff", currenItemUI.Item);
-                Destroy(currenItemUI.gameObject);
+                Item itemTepm = currenItemUI.Item;
+                // poner en el inventario
+                DestroyImmediate(currenItemUI.gameObject);
+                transform.parent.SendMessage("PutOff", itemTepm);
+                
                 
             }
         }
 
 
         if (eventData.button != PointerEventData.InputButton.Left) return; // si es izq button no selecciona objetos
-        //base.OnPointerDown(eventData);
+                                                                           //base.OnPointerDown(eventData);
+
+        bool isUpdateProperty = false;
         //si tiene objeto 
         if (InventoryManager.Instance.IsPickItem == true)
         {
@@ -53,6 +57,7 @@ public class EquipmentSlot : Slot
                 if (IsRightItem(pickItem.Item))
                 {
                     InventoryManager.Instance.PickItem.Exchange(currentItemUI);
+                    isUpdateProperty = true;
                 }
             }
             // no existe armaduras en el slot
@@ -62,6 +67,7 @@ public class EquipmentSlot : Slot
                 {
                     this.StoreItem(InventoryManager.Instance.PickItem.Item); // coger el objeto actual
                     InventoryManager.Instance.RemoveItem(1);
+                    isUpdateProperty = true;
                 }
             }
         }
@@ -73,10 +79,14 @@ public class EquipmentSlot : Slot
                 ItemUI currentItemUI = transform.GetChild(0).GetComponent<ItemUI>();
                 InventoryManager.Instance.PickUpItem(currentItemUI.Item, currentItemUI.Amount);
                 Destroy(transform.GetChild(0).gameObject);
+                isUpdateProperty = true;
             }
         }
-
-
+        //enviar mensaje hacia arriba
+        if (isUpdateProperty)
+        {
+            transform.SendMessageUpwards("UpdatePropertytText");
+        }
     
     }
 
