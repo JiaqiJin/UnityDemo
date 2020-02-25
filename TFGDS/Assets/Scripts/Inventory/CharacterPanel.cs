@@ -27,6 +27,7 @@ public class CharacterPanel : Inventory
     {
         base.Start();
         propertyText = transform.Find("PropertyPanel/Text").GetComponent<Text>();
+        PlayerInfo.instance_.OnPlayerInfoChanged += this.OnPlayerInfoChanged;
         UpdatePropertytText();
     }
 
@@ -70,7 +71,16 @@ public class CharacterPanel : Inventory
         UpdatePropertytText();
     }
 
+    void OnPlayerInfoChanged(InfoType type)
+    {
+        if (type == InfoType.All || type == InfoType.Level || type == InfoType.MP || type == InfoType.HP || type == InfoType.MP)
+        {
+            UpdatePropertytText();
+            //Debug.Log("update");
+        }
 
+        //type == InfoType.Level|| type == InfoType.MP
+    }
     private void UpdatePropertytText()
     {
         int strength = 0, intellect = 0, agility = 0, stamina = 0, power = 0;

@@ -228,6 +228,22 @@
     "buyPrice": 5,
     "sellPrice": 4,
     "sprite": "Sprites/Items/ingots"
-  }
+  },
+  {
+    "id": 18,
+    "name": "necklace",
+    "type": "Equipment",
+    "quality": "Common",
+    "description": "good necklace",
+    "capacity": 1,
+    "buyPrice": 100,
+    "sellPrice": 20,
+    "sprite": "Sprites/Items/necklace",
+    "strength": 2,
+    "intellect": 3,
+    "agility": 4,
+    "stamina": 4,
+    "equipType": "Neck"
+  },
 
 ]

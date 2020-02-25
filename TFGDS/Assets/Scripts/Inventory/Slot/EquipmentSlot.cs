@@ -82,7 +82,7 @@ public class EquipmentSlot : Slot
                 isUpdateProperty = true;
             }
         }
-        //enviar mensaje hacia arriba
+        //enviar mensaje(funcion) hacia arriba
         if (isUpdateProperty)
         {
             transform.SendMessageUpwards("UpdatePropertytText");
