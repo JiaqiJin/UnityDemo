@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public enum InfoType
 {
     Name,
@@ -19,6 +19,8 @@ public class PlayerInfo : MonoBehaviour
 {
    private float currentRef;
     public static PlayerInfo instance_;
+
+    public Text coinText;
 
     #region property
 
@@ -117,6 +119,7 @@ public class PlayerInfo : MonoBehaviour
     private void Start()
     {
         Init();
+        coinText.text = this.Coin.ToString();
     }
     private void Update()
     {
@@ -127,13 +130,15 @@ public class PlayerInfo : MonoBehaviour
     //control de eventos
     public delegate void OnPlayerInfoChangeEvent(InfoType type);
     public event OnPlayerInfoChangeEvent OnPlayerInfoChanged;
-
+    /// <summary>
+    /// Inicializacion de los info del player
+    /// </summary>
     void Init()
     {
         this.HP = 100;
         this.MP = 100;
         this.Exp = 0;
-        this.Coin = 1;
+        this.Coin = 1000;
         this.Stamina = 100;
         this.Level = 1;
         this.Power = 10;
@@ -209,6 +214,28 @@ public class PlayerInfo : MonoBehaviour
         }
         
     }
-
-   
+    /// <summary>
+    /// Methodoss para gastar monedas
+    /// </summary>
+    public bool ConsumeCoin(int amount)
+    {
+        if(this.Coin >= amount)
+        {
+            this.Coin -= amount;
+            coinText.text = this.Coin.ToString();
+            OnPlayerInfoChanged(InfoType.Coin);
+            return true;
+        }
+        return false;
+    }   
+    /// <summary>
+    /// Mehtos para ganar monedas
+    /// </summary>
+    /// <param name="amount"></param>
+    public void EarnCoin(int amount)
+    {
+        this.Coin += amount;
+        coinText.text = this.Coin.ToString();
+        OnPlayerInfoChanged(InfoType.Coin);
+    }
 }

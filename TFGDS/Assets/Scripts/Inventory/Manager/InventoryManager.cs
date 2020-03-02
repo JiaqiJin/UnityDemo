@@ -48,12 +48,16 @@ public class InventoryManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        ParseItemJson();
+    {     
         tooltip = GameObject.FindObjectOfType<ToolTips>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         pickItem = GameObject.Find("PickItem").GetComponent<ItemUI>();
         pickItem.Hide();
+    }
+
+    private void Awake()
+    {
+        ParseItemJson();
     }
 
     private void Update()
