@@ -9,7 +9,12 @@ public class VendoSlot : Slot
 {
     public override void OnPointerDown(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right && InventoryManager.Instance.IsPickItem == false)
+        if (eventData.button == PointerEventData.InputButton.Left && InventoryManager.Instance.IsPickItem == true)
+        {
+            Item currentItem = transform.GetChild(0).GetComponent<ItemUI>().Item;
+            transform.parent.parent.SendMessage("SellItem", currentItem);
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right && InventoryManager.Instance.IsPickItem == false)
         {
             if(transform.childCount > 0)
             {
@@ -19,3 +24,7 @@ public class VendoSlot : Slot
         }
     }
 }
+
+/*
+    
+     */
