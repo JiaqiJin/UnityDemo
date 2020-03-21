@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 //diferentes estados del AI 
 public enum AIStateType
 {
@@ -12,6 +13,11 @@ public enum AIStateType
 public enum AITargetType
 {
     None, WayPoint, Visual_Player
+}
+
+public enum AITriggerEventType
+{
+    Enter, Stay, Exit
 }
 
 /// <summary>
@@ -61,17 +67,18 @@ public abstract class AIStateMachine : MonoBehaviour
 
 
     //protected Member
+    protected AIState currentState_ = null;
     protected Dictionary<AIStateType, AIState> state_ = new Dictionary<AIStateType, AIState>();
     protected AITarget target_ = new AITarget();
 
     [SerializeField]
     protected SphereCollider targetTrigger_ = null;
     [SerializeField]
-    protected SphereCollider sensor_ = null;
+    protected SphereCollider sensorTrigger_ = null;
     [SerializeField]
     protected AIStateType currentStateType = AIStateType.Idle;
 
-    //distance de stop añ target objeto
+    //distance de stop al target objeto
     [SerializeField]
     [Range(0, 15)] protected float stoppingDistance_ = 1.0f;
 
@@ -81,7 +88,7 @@ public abstract class AIStateMachine : MonoBehaviour
     protected Collider collider_ = null;
     protected Transform transform_ = null;
     //getter 
-    public Animator aninimator
+    public Animator animator
     {
         get
         {
@@ -105,8 +112,54 @@ public abstract class AIStateMachine : MonoBehaviour
             if (state != null && !state_.ContainsKey(state.GetStateType()))
             {
                 state_[state.GetStateType()] = state;
+                state.SetStateMachine(this);
             }
         }
+
+        if (state_.ContainsKey(currentStateType))
+        {
+            currentState_ = state_[currentStateType];
+            currentState_.OnEnterState();
+        }
+        else
+        {
+            currentState_ = null;
+        }
+    }
+    /// <summary>
+    /// Mostrar el estado actual y posibles cambios de update y cambiar transiciones
+    /// </summary>
+    protected virtual void Update()
+    {
+        if(currentState_ == null)
+        {
+            return;
+        }
+
+        AIStateType newStateType = currentState_.OnUpdate();
+        if(newStateType != currentStateType)
+        {
+            AIState newState = null;
+            if(state_.TryGetValue(newStateType , out newState))
+            {
+                currentState_.OnExitState();
+                newState.OnEnterState();
+                currentState_ = newState;
+            }
+            else
+            {
+                if (state_.TryGetValue(AIStateType.Idle, out newState))
+                {
+                    currentState_.OnExitState();
+                    newState.OnEnterState();
+                    currentState_ = newState;
+                }
+            }
+            //currentStateType = newStateType;
+
+        }
+
+
     }
 
     protected virtual void FixedUpdate()
@@ -117,6 +170,14 @@ public abstract class AIStateMachine : MonoBehaviour
             target_.distance = Vector3.Distance(transform_.position, target_.position);
         }
 
+    }
+
+    protected virtual void Awake()
+    {
+        transform_ = transform;
+        animator_ = GetComponent<Animator>();
+        navAgent_ = GetComponent<NavMeshAgent>();
+        collider_ = GetComponent<Collider>();
     }
 
     // setter al current objeto target
@@ -155,7 +216,7 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
-    public void Clear()
+    public void ClearTarget()
     {
         target_.Clear();
         if (targetTrigger_ != null)
@@ -163,5 +224,6 @@ public abstract class AIStateMachine : MonoBehaviour
             targetTrigger_.enabled = false;
         }
     }
+
 
 }

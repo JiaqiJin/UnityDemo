@@ -20,6 +20,7 @@ public class TestInventory : MonoBehaviour
         {
             Knapsack.Instance.DisplaySwitch();
             Chest.Instance.DisplaySwitch();
+            CharacterPanel.Instance.DisplaySwitch();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
