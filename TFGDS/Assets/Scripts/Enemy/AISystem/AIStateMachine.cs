@@ -76,7 +76,7 @@ public abstract class AIStateMachine : MonoBehaviour
     [SerializeField]
     protected SphereCollider sensorTrigger_ = null;
     [SerializeField]
-    protected AIStateType currentStateType = AIStateType.Idle;
+    protected AIStateType currentStateType_ = AIStateType.Idle;
 
     //distance de stop al target objeto
     [SerializeField]
@@ -103,8 +103,44 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
+    public Vector3 sensorPosition
+    {
+        get
+        {
+            if (sensorTrigger_ == null) return Vector3.zero;
+            //calcular la escala nuevo ya que el transform principal cuando cambia no afecta al sensor transform
+            Vector3 point = sensorTrigger_.transform.position;
+            point.x += sensorTrigger_.center.x * sensorTrigger_.transform.lossyScale.x;
+            point.y += sensorTrigger_.center.y * sensorTrigger_.transform.lossyScale.x;
+            point.z += sensorTrigger_.center.z * sensorTrigger_.transform.lossyScale.x;
+            return point;
+        }
+    }
+
+    public float SensorRadius
+    {
+        get
+        {
+            if (sensorTrigger_ == null) return 0.0f;
+            // el maximo radio del sensor cuando cambia el radio del padre
+            float radius = Mathf.Max(sensorTrigger_.radius * sensorTrigger_.transform.localScale.x,
+                                     sensorTrigger_.radius * sensorTrigger_.transform.localScale.y);
+
+            return Mathf.Max(radius, sensorTrigger_.radius * sensorTrigger_.transform.localScale.z);
+        }
+    }
+
     protected virtual void Start()
     {
+        if(sensorTrigger_ != null)
+        {
+            AISensor script = sensorTrigger_.GetComponent<AISensor>();
+            if(script != null)
+            {
+                script.parentStateMachine = this;
+            }
+        }
+
         AIState[] states = GetComponents<AIState>();
 
         foreach (AIState state in states)
@@ -116,9 +152,9 @@ public abstract class AIStateMachine : MonoBehaviour
             }
         }
 
-        if (state_.ContainsKey(currentStateType))
+        if (state_.ContainsKey(currentStateType_))
         {
-            currentState_ = state_[currentStateType];
+            currentState_ = state_[currentStateType_];
             currentState_.OnEnterState();
         }
         else
@@ -131,16 +167,16 @@ public abstract class AIStateMachine : MonoBehaviour
     /// </summary>
     protected virtual void Update()
     {
-        if(currentState_ == null)
+        if (currentState_ == null)
         {
             return;
         }
 
         AIStateType newStateType = currentState_.OnUpdate();
-        if(newStateType != currentStateType)
+        if (newStateType != currentStateType_)
         {
             AIState newState = null;
-            if(state_.TryGetValue(newStateType , out newState))
+            if (state_.TryGetValue(newStateType, out newState))
             {
                 currentState_.OnExitState();
                 newState.OnEnterState();
@@ -155,10 +191,9 @@ public abstract class AIStateMachine : MonoBehaviour
                     currentState_ = newState;
                 }
             }
-            //currentStateType = newStateType;
+            currentStateType_ = newStateType;
 
         }
-
 
     }
 
@@ -178,6 +213,14 @@ public abstract class AIStateMachine : MonoBehaviour
         animator_ = GetComponent<Animator>();
         navAgent_ = GetComponent<NavMeshAgent>();
         collider_ = GetComponent<Collider>();
+
+        if (GameSceneManager.instance != null)
+        {
+            //registrar state maquina en el diccionario del game manager
+            if (collider_) GameSceneManager.instance.RegisterAIStateMachine(collider_.GetInstanceID(), this);
+            if (sensorTrigger_) GameSceneManager.instance.RegisterAIStateMachine(sensorTrigger_.GetInstanceID(), this);
+        }
+
     }
 
     // setter al current objeto target
@@ -224,6 +267,58 @@ public abstract class AIStateMachine : MonoBehaviour
             targetTrigger_.enabled = false;
         }
     }
+    /// <summary>
+    /// llama al sistema physica de unity y llegar al player 
+    /// </summary>
+    /// <param name="other"></param>
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (targetTrigger_ == null || other != targetTrigger_) return;
+
+        if (currentState_)
+            currentState_.OnDestinationReached(true);
+    }
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="other"></param>
+    public void OnTriggerExit(Collider other)
+    {
+        if (targetTrigger_ == null || other != targetTrigger_) return;
+
+        if (currentState_ != null)
+            currentState_.OnDestinationReached(false);
+    }
 
 
+    public virtual void OnTriggerEvent(AITriggerEventType type , Collider other)
+    {
+        if (currentState_ != null)
+            currentState_.OnTriggerEvent(type, other);
+    }
+
+  
+    protected virtual void OnAnimatorMove()
+    {
+        if(currentState_ != null)
+        {
+            currentState_.OnAnimatorUpdate();
+        }
+    }
+
+    protected virtual void OnAnimatorIK(int layerIndex)
+    {
+        if (currentState_ != null)
+            currentState_.OnAnimatorIKUpdate();
+    }
+
+    public void NavAgentControl(bool positionUpdate, bool rotationUpdate)
+    {
+        if (navAgent_)
+        {
+            navAgent_.updatePosition = positionUpdate;
+            navAgent_.updateRotation = rotationUpdate;
+        }
+    }
+     
 }

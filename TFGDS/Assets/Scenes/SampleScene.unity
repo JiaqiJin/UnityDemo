@@ -1267,6 +1267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 213465538}
   - component: {fileID: 213465539}
+  - component: {fileID: 213465540}
   m_Layer: 15
   m_Name: Sensor
   m_TagString: Untagged
@@ -1300,7 +1301,19 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 20
-  m_Center: {x: 0, y: 1.7, z: 0}
+  m_Center: {x: 0, y: 1.6, z: 0}
+--- !u!114 &213465540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213465537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0cae5fb6be0e48468137b50a3ad1059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &245486231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4987,7 +5000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740018107}
   m_Layer: 13
-  m_Name: Ybot
+  m_Name: YbotEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7465,7 +7478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTrigger_: {fileID: 1178588682}
   sensorTrigger_: {fileID: 213465539}
-  currentStateType: 1
+  currentStateType_: 1
   stoppingDistance_: 1
 --- !u!4 &1392699613 stripped
 Transform:
