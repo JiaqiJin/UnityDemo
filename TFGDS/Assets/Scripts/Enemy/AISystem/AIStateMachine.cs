@@ -70,6 +70,8 @@ public abstract class AIStateMachine : MonoBehaviour
     protected AIState currentState_ = null;
     protected Dictionary<AIStateType, AIState> state_ = new Dictionary<AIStateType, AIState>();
     protected AITarget target_ = new AITarget();
+    protected int rootPositionRefCount_ = 0;
+    protected int rootRotationRefCount_ = 0;
 
     [SerializeField]
     protected SphereCollider targetTrigger_ = null;
@@ -130,6 +132,12 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
+    public bool useRootPosition { get { return rootPositionRefCount_ > 0; } }
+    public bool useRootRotation { get { return rootRotationRefCount_ > 0; } }
+    /// <summary>
+    /// ------------------------------------------------
+    /// </summary>
+
     protected virtual void Start()
     {
         if(sensorTrigger_ != null)
@@ -161,6 +169,17 @@ public abstract class AIStateMachine : MonoBehaviour
         {
             currentState_ = null;
         }
+
+        if (animator_)
+        {
+            AIStateMachineLink[] scripts = animator_.GetBehaviours<AIStateMachineLink>();
+            foreach (AIStateMachineLink script in scripts)
+            {
+                script.stateMachine = this;
+            }
+        }
+       
+
     }
     /// <summary>
     /// Mostrar el estado actual y posibles cambios de update y cambiar transiciones
@@ -311,7 +330,11 @@ public abstract class AIStateMachine : MonoBehaviour
         if (currentState_ != null)
             currentState_.OnAnimatorIKUpdate();
     }
-
+    /// <summary>
+    /// Methos para configurar el nav agent
+    /// </summary>
+    /// <param name="positionUpdate"></param>
+    /// <param name="rotationUpdate"></param>
     public void NavAgentControl(bool positionUpdate, bool rotationUpdate)
     {
         if (navAgent_)
@@ -320,5 +343,14 @@ public abstract class AIStateMachine : MonoBehaviour
             navAgent_.updateRotation = rotationUpdate;
         }
     }
-     
+    /// <summary>
+    /// Añadir root motion
+    /// </summary>
+    /// <param name="rootPosition"></param>
+    /// <param name="rootRotation"></param>
+    public void AddRootMotionRequest(int rootPosition , int rootRotation)
+    {
+        rootPositionRefCount_ = rootPosition;
+        rootRotationRefCount_ = rootRotation;
+    }
 }
