@@ -131,7 +131,7 @@ public abstract class AIStateMachine : MonoBehaviour
             return Mathf.Max(radius, sensorTrigger_.radius * sensorTrigger_.transform.localScale.z);
         }
     }
-
+    //comprobar si has usado el root 
     public bool useRootPosition { get { return rootPositionRefCount_ > 0; } }
     public bool useRootRotation { get { return rootRotationRefCount_ > 0; } }
     /// <summary>
@@ -215,7 +215,9 @@ public abstract class AIStateMachine : MonoBehaviour
         }
 
     }
-
+    /// <summary>
+    /// recalula la distanci al objeto actual 
+    /// </summary>
     protected virtual void FixedUpdate()
     {
         VisualThreat.Clear();
@@ -309,14 +311,20 @@ public abstract class AIStateMachine : MonoBehaviour
             currentState_.OnDestinationReached(false);
     }
 
-
+    /// <summary>
+    /// Llamado por AISensor 
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="other"></param>
     public virtual void OnTriggerEvent(AITriggerEventType type , Collider other)
     {
         if (currentState_ != null)
             currentState_.OnTriggerEvent(type, other);
     }
 
-  
+  /// <summary>
+  /// llamada despues de root motion activado
+  /// </summary>
     protected virtual void OnAnimatorMove()
     {
         if(currentState_ != null)
@@ -324,7 +332,10 @@ public abstract class AIStateMachine : MonoBehaviour
             currentState_.OnAnimatorUpdate();
         }
     }
-
+    /// <summary>
+    /// cuando se actuliza el IK System tbm se actualza el IK target y su peso
+    /// </summary>
+    /// <param name="layerIndex"></param>
     protected virtual void OnAnimatorIK(int layerIndex)
     {
         if (currentState_ != null)
@@ -344,7 +355,7 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
     /// <summary>
-    /// Añadir root motion
+    /// Añadir/quitar root motion
     /// </summary>
     /// <param name="rootPosition"></param>
     /// <param name="rootRotation"></param>

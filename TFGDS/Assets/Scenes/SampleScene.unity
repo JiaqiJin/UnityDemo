@@ -5764,7 +5764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1060964622
 Transform:
   m_ObjectHideFlags: 0
@@ -7480,6 +7480,13 @@ MonoBehaviour:
   sensorTrigger_: {fileID: 213465539}
   currentStateType_: 1
   stoppingDistance_: 1
+  fvo_: 50
+  sight_: 0.5
+  hearing_: 1
+  aggression_: 1
+  health_: 100
+  intelligence_: 0.5
+  satisfaction_: 0.5
 --- !u!4 &1392699613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400138, guid: 2f9d958fbcd96e44ca35a77a15e3187a,
