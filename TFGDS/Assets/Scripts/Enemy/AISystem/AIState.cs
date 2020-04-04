@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Clase base para todo los estados de AI 
+/// </summary>
 public abstract class AIState : MonoBehaviour
 {
     //public methos
