@@ -11,7 +11,7 @@ public abstract class AIEnemyState : AIState
     private void Awake()
     {
         playerLaterMask_ = LayerMask.GetMask("Player", "AI Body Part") + 1;
-        bodyPartLayer_ = LayerMask.GetMask("AI Body Part") ;
+        bodyPartLayer_ = LayerMask.NameToLayer("AI Body Part") ;
     }
 
     public override void OnTriggerEvent(AITriggerEventType eventType, Collider other)
@@ -20,13 +20,13 @@ public abstract class AIEnemyState : AIState
         if (statemachine_ == null)
             return;
 
-        if(eventType != AITriggerEventType.Exit)
+        if(eventType != AITriggerEventType.Exit) 
         {
-            AITargetType curType = statemachine_.VisualThreat.type;
+            AITargetType curType = statemachine_.VisualThreat.type; //comprobar la amenaza que hemos almacenado
 
             if(other.CompareTag("Player"))
             {
-                float distance = Vector3.Distance(statemachine_.sensorPosition, other.transform.position);//distancia de amenaza
+                float distance = Vector3.Distance(statemachine_.sensorPosition, other.transform.position);//distancia de amenaza desde el sensor hasta sensor del jugado
                 //comproueba el amenaza visual si es player
                 if (curType != AITargetType.Visual_Player
                     ||(curType == AITargetType.Visual_Player && distance < statemachine_.VisualThreat.distance))
@@ -53,8 +53,8 @@ public abstract class AIEnemyState : AIState
     protected virtual bool colliderIsVisible(Collider other, out RaycastHit hitInfo, int layerMask = -1)
     {
         hitInfo = new RaycastHit();
-
-        if (statemachine_ == null)
+                                     //el statemachine tiene que se de tipo AIEnemyStateMachine
+        if (statemachine_ == null || statemachine_.GetType() != typeof(AIEnemyStateMachine))
             return false;
 
         AIEnemyStateMachine enemyMachine = (AIEnemyStateMachine)statemachine_;
@@ -67,7 +67,7 @@ public abstract class AIEnemyState : AIState
         if (angle > (enemyMachine.fov * 0.5))
             return false;
 
-
+        //raycast desde sensor 
         RaycastHit[] hits = Physics.RaycastAll(head, direction.normalized, statemachine_.SensorRadius * enemyMachine.sight, layerMask);
 
         //encontrar el collider mas cercano que no pertenece al ai body part
@@ -81,16 +81,16 @@ public abstract class AIEnemyState : AIState
             {
                 if(hit.transform.gameObject.layer == bodyPartLayer_) //ai_body layer
                 {
-                    if (statemachine_ != GameSceneManager.instance.GetAIStateMachine(hit.rigidbody.GetInstanceID())) // not mismo layer
+                    if (statemachine_ != GameSceneManager.instance.GetAIStateMachine(hit.rigidbody.GetInstanceID())) // not mismo layer(body)
                     {
-                        closestColliderDistance = hit.distance;
+                        closestColliderDistance = hit.distance;  // almacenar nuevos datos
                         closestCollider = hit.collider;
                         hitInfo = hit;
                     }
                 }
                 else
                 {
-                    closestColliderDistance = hit.distance;
+                    closestColliderDistance = hit.distance;  // simplemente el nuevo mas cercano que has encotrado
                     closestCollider = hit.collider;
                     hitInfo = hit;
                 }
