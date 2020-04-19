@@ -11,21 +11,26 @@ public class QuestEvent
     public string name;
     public string desc;
     public string id;
+    public int order = -1;
+    public QuestButton button;
     public EventStatus status;
+    public GameObject location;
 
     public List<QuestPath> pathList = new List<QuestPath>();
 
-    public QuestEvent(string n , string d)
+    public QuestEvent(string n , string d , GameObject loc)
     {
         id = Guid.NewGuid().ToString(); //identificador unico
         name = n;
         desc = d;
         status = EventStatus.WAITING;
+        location = loc;
     }
 
     public void UpdateQuestEvent(EventStatus es)
     {
         status = es;
+        button.UpdateButton(es);
     }
 
     public string GetID()
