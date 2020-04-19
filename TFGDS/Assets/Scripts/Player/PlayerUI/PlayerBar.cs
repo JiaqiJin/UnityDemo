@@ -66,6 +66,7 @@ public class PlayerBar : MonoBehaviour
         healthText.text = info.HP + "/100";
         mpText.text = info.MP + "/100";
         staminText.text = info.Stamina + "/100";
+        //Debug.Log(info.HP);
     }
     private void FixedUpdate()
     {

@@ -146,6 +146,7 @@ public class PlayerInfo : MonoBehaviour
         //Debug.Log("hp es" + this.HP);
     }
 
+
     void StatChanged()
     {
         
@@ -237,5 +238,25 @@ public class PlayerInfo : MonoBehaviour
         this.Coin += amount;
         coinText.text = this.Coin.ToString();
         OnPlayerInfoChanged(InfoType.Coin);
+    }
+
+    public void CosumeStamina()
+    {
+        this.Stamina -= 10;
+        OnPlayerInfoChanged(InfoType.Stamina);
+    }
+
+    public void HealthDamageRest(int amout)
+    {
+        this.HP -= amout;
+        if (this.HP <= 0) this.HP = 0;
+        OnPlayerInfoChanged(InfoType.HP);
+    }
+
+    public void HealthAdd(int amout)
+    {
+        this.HP += amout;
+        this.HP = Mathf.Clamp(this.HP, 0, 100);
+        OnPlayerInfoChanged(InfoType.HP);
     }
 }

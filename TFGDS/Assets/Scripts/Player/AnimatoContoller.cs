@@ -99,6 +99,7 @@ public class AnimatoContoller : MonoBehaviour
         {
             anim.SetTrigger("roll");
             canAttack = false;
+            PlayerInfo.instance_.CosumeStamina();
         }
 
         //attack

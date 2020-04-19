@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : IActorManagerInterface
 {
     private AnimatoContoller ac;
-    public AnimatorManager am;
+    //public AnimatorManager am;
     private Collider weaponColL;
     [SerializeField]
     private Collider weaponColR;
