@@ -46,7 +46,7 @@ public class AnimatorManager : MonoBehaviour
 
     public void TryDoDamage()
     {
-        if(PlayerInfo.instance_.HP > 0)
+        /*if(PlayerInfo.instance_.HP > 0)
         {
             PlayerInfo.instance_.HealthDamageRest(40);
             Hit();
@@ -54,8 +54,44 @@ public class AnimatorManager : MonoBehaviour
         else
         {
             Die();
+        }*/
+
+        if(sm.isUnAttackble)
+        {
+
+        }
+        else if(sm.isDefense)
+        {
+            //attack block
+            Blocked();
+        }
+        else
+        {
+            if(PlayerInfo.instance_.HP <= 0)
+            {
+                //death
+                Die();
+            }
+            else
+            {
+                PlayerInfo.instance_.HealthDamageRest(40);
+                if (PlayerInfo.instance_.HP > 0)
+                {
+                    //PlayerInfo.instance_.HealthDamageRest(40);
+                    Hit();
+                }
+                else
+                {
+                    Die();
+                }
+            }
         }
         //print("do damage");
+    }
+
+    public void Blocked()
+    {
+        ac.IssueTrigger("blocked");
     }
 
     public void Hit()

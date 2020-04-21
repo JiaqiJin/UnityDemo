@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public WeaponManager wm;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

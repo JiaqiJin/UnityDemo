@@ -13,6 +13,9 @@ public class WeaponManager : IActorManagerInterface
     public GameObject whL;
     public GameObject whR;
 
+    public WeaponController wcL;
+    public WeaponController wcR;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +25,28 @@ public class WeaponManager : IActorManagerInterface
         whR = transform.DeepFind("weaponHandleR").gameObject;
         weaponColL = whL.GetComponentInChildren<Collider>();
         weaponColR = whR.GetComponentInChildren<Collider>();
+
+        wcL = BindWeaponController(whL);
+        wcR = BindWeaponController(whR);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public WeaponController BindWeaponController(GameObject targetObj)
+    {
+        WeaponController tempwc;
+        tempwc = targetObj.GetComponent<WeaponController>();
+        if(tempwc == null)
+        {
+            tempwc = targetObj.AddComponent<WeaponController>();
+        }
+        tempwc.wm = this;
+        return tempwc;
     }
 
     public void WeaponDisable()

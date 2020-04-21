@@ -96,14 +96,22 @@ public class camaraContoller : MonoBehaviour
             if (lockTarget != null)
             {
                 //print
-                lockIcon.rectTransform.position = Camera.main.WorldToScreenPoint(lockTarget.obj.transform.position);
-                if (Vector3.Distance(model.transform.position, lockTarget.obj.transform.position) > 10.0f)
-                {
-                    lockTarget = null;
-                    lockIcon.enabled = false;
-                    lockState = false;
-                }
+                lockIcon.rectTransform.position = Camera.main.WorldToScreenPoint(lockTarget.obj.transform.position);               
             }
+            if (Vector3.Distance(model.transform.position, lockTarget.obj.transform.position) > 10.0f)
+            {
+                lockTarget = null;
+                lockIcon.enabled = false;
+                lockState = false;
+            }
+            AnimatorManager targetAm = lockTarget.obj.GetComponent<AnimatorManager>();
+            if(targetAm != null && targetAm.sm.isDie) // si has muerto desvincula la mira
+            {
+                lockTarget = null;
+                lockIcon.enabled = false;
+                lockState = false;
+            }
+
         }
        
        
@@ -167,11 +175,12 @@ public class camaraContoller : MonoBehaviour
     {
         public GameObject obj;
         public float halfHeigt;
-
+        public AnimatorManager am;
         public LockTarget(GameObject obj_,float hal)
         {
             this.obj = obj_;
             this.halfHeigt = hal;
+            am = obj_.GetComponent<AnimatorManager>();
         }
 
     }

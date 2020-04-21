@@ -19,6 +19,10 @@ public class PlayerSatetManage : IActorManagerInterface
     public bool isDie;
     public bool isBlocked;
     public bool isDefense;
+
+    [Header("------------ 2 flag--------")]
+    public bool isAllowDefense;
+    public bool isUnAttackble;
     private void Awake()
     {
         //player = PlayerInfo.instance_;
@@ -39,7 +43,10 @@ public class PlayerSatetManage : IActorManagerInterface
         isHit = am.ac.CheckState("hit");
         isDie = am.ac.CheckState("die");
         isBlocked = am.ac.CheckState("blocked");
-        isDefense = am.ac.CheckState("defense1h", "defense");
+        //isDefense = am.ac.CheckState("defense1h", "defense");
+        isAllowDefense = isGround || isBlocked;
+        isDefense = isAllowDefense && am.ac.CheckState("defense1h", "defense");
+        isUnAttackble = isRoll;
     }
 
     public void Test()

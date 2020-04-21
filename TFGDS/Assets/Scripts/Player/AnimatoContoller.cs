@@ -109,9 +109,21 @@ public class AnimatoContoller : MonoBehaviour
             anim.SetTrigger("attack");
         }
 
-        if (!pi.run)
+        if (leftShiled)
         {
-            anim.SetBool("defense", pi.defense);
+            if (CheckState("ground") || CheckState("blocked"))
+            {
+                anim.SetBool("defense", pi.defense);
+                anim.SetLayerWeight(anim.GetLayerIndex("defense"), 1);
+            }
+            else
+            {
+                anim.SetBool("defense", false);
+            }            
+        }
+        else
+        {
+            anim.SetLayerWeight(anim.GetLayerIndex("defense"), 0);
         }
          
         
@@ -220,12 +232,12 @@ public class AnimatoContoller : MonoBehaviour
     {
         pi.inputEnable = false;
         lockMoving = true ;
-        //thrustVect = new Vector3(rollVelocity , 0, 0);
+        thrustVect = new Vector3(rollVelocity , 0, 0);
     }
 
     public void OnRollUpdate()
     {
-        thrustVect = model.transform.forward * (rollVelocity);
+        thrustVect = model.transform.forward * (rollVelocity); 
     }
     /// <summary>
     /// attack layer Anim
@@ -267,18 +279,36 @@ public class AnimatoContoller : MonoBehaviour
     public void OnAnimatorUpdateRM(Vector3 animDeltaPos)
     {
         //print(deltaPos);
-        if((CheckState("attack1hC") || CheckState("roll")) && Knapsack.Instance.CanvasGroups.alpha != 1)
+        //if((CheckState("attack1hC") || CheckState("roll")) && Knapsack.Instance.CanvasGroups.alpha != 1)
+        if(CheckState("attack1hC"))
         {
             thrustVect = Vector3.zero;
             deltaPos += animDeltaPos;           
         }
-        
+        /*else if(CheckState("roll") && Knapsack.Instance.CanvasGroups.alpha != 1)
+        {
+            thrustVect = Vector3.zero;
+            deltaPos += animDeltaPos;
+        }
+        */
     }
-
+    public void OnDieEnter()
+    {
+        pi.inputEnable = false;
+        movingVect = Vector3.zero;
+    }
+    public void OnBlockedEnter()
+    {
+        pi.inputEnable = false;
+    }
+    /// <summary>
+    /// Hit enter 
+    /// </summary>
     public void OnHitEnter()
     {
         pi.inputEnable = false;
         //movingVect = Vector3.zero;
+        model.SendMessage("WeaponDisable");
     }
 
     public void IssueTrigger(string triggerName)

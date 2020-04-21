@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce57d84a505f95459743f597ba71efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wm: {fileID: 0}
 --- !u!1 &63333495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +2233,8 @@ MonoBehaviour:
   weaponColR: {fileID: 0}
   whL: {fileID: 1766676793}
   whR: {fileID: 49218157}
+  wcL: {fileID: 0}
+  wcR: {fileID: 0}
 --- !u!114 &357201915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5475,7 +5478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &793110379
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6459,7 +6462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1060964622
 Transform:
   m_ObjectHideFlags: 0
@@ -10605,6 +10608,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   am: {fileID: 0}
+  isGround: 0
+  isAttack: 0
+  isJump: 0
+  isFall: 0
+  isRoll: 0
+  isHit: 0
+  isDie: 0
+  isBlocked: 0
+  isDefense: 0
+  isAllowDefense: 0
+  isUnAttackble: 0
 --- !u!1001 &1609732228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13092,7 +13106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1931301140
 CapsuleCollider:
   m_ObjectHideFlags: 0

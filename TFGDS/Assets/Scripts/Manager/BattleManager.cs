@@ -26,10 +26,25 @@ public class BattleManager : IActorManagerInterface
 
     private void OnTriggerEnter(Collider col)
     {
+        WeaponController targetWc = col.GetComponent<WeaponController>();
         //print(col.name);
-        if(col.tag == "weapon")
+
+        GameObject attacker = targetWc.wm.am.gameObject;
+        GameObject receiver = am.gameObject;
+        // solo se pude atacar entre cierto angulos
+        Vector3 attackingDir = receiver.transform.position - attacker.transform.position;
+        //Vector3 counterDir = attacker.transform.position - receiver.transform.position;
+        float attackAngle1 = Vector3.Angle(attacker.transform.forward, attackingDir);
+
+        bool attackValid = (attackAngle1 < 45);
+
+        if (col.tag == "weapon")
         {
-            am.TryDoDamage();
+            if(attackValid)
+            {
+                am.TryDoDamage();  
+            }
+            
         }
     }
 }

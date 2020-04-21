@@ -86,7 +86,7 @@ public class PlayerInput : UserInput
         lockon = Input.GetKey(keyE);
         Attack();
         roll = buttonB.OnReleased && buttonB.IsDelaying;
-        jump = buttonB.IsPressing && buttonB.IsDelaying && buttonA.IsPressing;
+        jump = buttonB.OnPressed && buttonB.IsExteding;
     }
    
     //jump input
