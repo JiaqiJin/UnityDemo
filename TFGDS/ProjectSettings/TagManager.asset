@@ -6,6 +6,7 @@ TagManager:
   tags:
   - weapon
   - AI Visual
+  - MobPoint
   layers:
   - Default
   - TransparentFX
