@@ -38,9 +38,7 @@ public class PlayerBar : MonoBehaviour
     private void Start()
     {
         PlayerInfo.instance_.OnPlayerInfoChanged += this.OnPlayerInfoChanged;
-    }
-
-   
+    } 
     private void OnDestroy()
     {
         PlayerInfo.instance_.OnPlayerInfoChanged -= this.OnPlayerInfoChanged;

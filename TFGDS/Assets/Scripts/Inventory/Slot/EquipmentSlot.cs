@@ -34,8 +34,7 @@ public class EquipmentSlot : Slot
                 Item itemTepm = currenItemUI.Item;
                 // poner en el inventario
                 DestroyImmediate(currenItemUI.gameObject);
-                transform.parent.SendMessage("PutOff", itemTepm);
-                
+                transform.parent.SendMessage("PutOff", itemTepm);              
                 
             }
         }

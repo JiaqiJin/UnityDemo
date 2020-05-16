@@ -73,7 +73,7 @@ public class SimpleBossEnemy : MonoBehaviour
             }
         }
 
-        Debug.Log(isAttacking);
+        //Debug.Log(isAttacking);
         if (isAttacking)
         {
             animator.SetBool("run", false);

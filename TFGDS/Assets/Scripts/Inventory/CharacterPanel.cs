@@ -110,6 +110,17 @@ public class CharacterPanel : Inventory
         agility += playerInfo.BasicAgility;
         stamina += playerInfo.Stamina;
         power += playerInfo.Power;
+
+        playerInfo.Power = power;
+        playerInfo.Stamina = stamina;
+        playerInfo.BasicAgility = agility;
+        playerInfo.BasicIntellect = intellect;
+        playerInfo.BasicStrength = strength;
+
+
+        //print(playerInfo.BasicStrength);
+        //print(playerInfo.BasicIntellect);
+        //print(playerInfo.BasicAgility);
         string text = string.Format("Stength：{0}\nIntellect：{1}\nAgility：{2}\nStamina：{3}\nDamage：{4} ", strength, intellect, agility, stamina, power);
         propertyText.text = text;
     }

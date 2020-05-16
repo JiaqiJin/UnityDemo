@@ -8,7 +8,9 @@ public class PlayerSatetManage : IActorManagerInterface
     //public AnimatorManager am;
     
     private int health;
-    private int restHealth = 10;
+    private int stamina;
+    private int mp;
+    //private int restHealth = 10;
     [Header("------------flag--------")]
     public bool isGround;
     public bool isAttack;
@@ -33,6 +35,8 @@ public class PlayerSatetManage : IActorManagerInterface
     {
         PlayerInfo player = PlayerInfo.instance_;
         health = player.HP;
+        stamina = player.Stamina;
+        mp = player.MP;
 
         isGround = am.ac.CheckState("ground");
         //Debug.Log(isGround);
@@ -56,7 +60,7 @@ public class PlayerSatetManage : IActorManagerInterface
 
     void OnPlayerInfoChanged(InfoType type)
     {
-        if (type == InfoType.HP || type == InfoType.MP)
+        if (type == InfoType.HP || type == InfoType.MP|| type == InfoType.Stamina)
         {
             UpdatePlayer();
             //Debug.Log("update");
@@ -68,6 +72,7 @@ public class PlayerSatetManage : IActorManagerInterface
     {
         PlayerInfo info = PlayerInfo.instance_;
         health = info.HP;
+        stamina = info.Stamina;
     }
 
 }

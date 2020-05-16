@@ -43,16 +43,19 @@ public class PlayerInfo : MonoBehaviour
     public int BasicStrength
     {
         get { return basicStrength; }
+        set { basicStrength = value; }
     }
 
     public int BasicIntellect
     {
         get { return basicIntellect; }
+        set { basicIntellect = value; }
     }
 
     public int BasicAgility
     {
         get { return basicAgility; }
+        set { basicAgility = value; }
     }
 
     public string Name

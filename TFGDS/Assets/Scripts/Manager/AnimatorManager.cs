@@ -58,7 +58,8 @@ public class AnimatorManager : MonoBehaviour
 
         if(sm.isUnAttackble)
         {
-
+            //roll 
+            //PlayerInfo.instance_.CosumeStamina();
         }
         else if(sm.isDefense)
         {

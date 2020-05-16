@@ -27,13 +27,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: R0L1
+  - m_Name: isGround
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: isGround
+  - m_Name: R0L1
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1699,14 +1699,14 @@ AnimatorStateMachine:
     m_Position: {x: 24, y: -48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102256252842321556}
-    m_Position: {x: -216, y: 96, z: 0}
+    m_Position: {x: -120, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102530877462988456}
     m_Position: {x: 48, y: 216, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107405357430891380}
-    m_Position: {x: 264, y: 192, z: 0}
+    m_Position: {x: 276, y: 228, z: 0}
   m_AnyStateTransitions:
   - {fileID: 1101315603205045172}
   - {fileID: 1101022475859464378}
