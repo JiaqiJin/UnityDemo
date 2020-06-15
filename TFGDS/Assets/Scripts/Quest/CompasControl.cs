@@ -17,9 +17,9 @@ public class CompasControl : MonoBehaviour
 
     private void Update()
     {
-        Vector3[] v = new Vector3[4];
+        Vector3[] v = new Vector3[4]; // los cornes de la barra de la brujula
         compasLine.GetLocalCorners(v);
-        float pointerScale = Vector3.Distance(v[1], v[2]);
+        float pointerScale = Vector3.Distance(v[1], v[2]); 
 
         Vector3 direction = target.transform.position - player.transform.position;
         float angleToTarget = Vector3.SignedAngle(player.transform.forward, direction, player.transform.up);

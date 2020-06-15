@@ -35,7 +35,7 @@ public class PlayerInfo : MonoBehaviour
     private int basicStrength = 10;
     private int basicIntellect = 10;
     private int basicAgility = 10;
-
+    private bool cursoModeState = false;
     #endregion
 
     #region gettter setter
@@ -44,6 +44,12 @@ public class PlayerInfo : MonoBehaviour
     {
         get { return basicStrength; }
         set { basicStrength = value; }
+    }
+
+    public bool CursoModeState
+    {
+        get { return cursoModeState; }
+        set { cursoModeState = value; }
     }
 
     public int BasicIntellect

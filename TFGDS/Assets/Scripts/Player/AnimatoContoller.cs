@@ -54,7 +54,11 @@ public class AnimatoContoller : MonoBehaviour
             // vector  que alamacena la veclocidad 
             movingVect = pi.Dmag * model.transform.forward * walkSpeed * ((pi.run) ? runMultiplier : 1.0f);
         }
-          
+
+        /*if (PlayerInfo.instance_.CursoModeState == true)
+            pi.inputEnable = false;
+        else if(PlayerInfo.instance_.CursoModeState == false)
+            pi.inputEnable = true;*/
     }
     // metodos para actualizar las animaciones y los movimeintos
     private void AnimationUpdate()

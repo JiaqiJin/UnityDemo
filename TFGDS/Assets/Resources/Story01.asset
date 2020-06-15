@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ffab4c3703d96e4ab37935b7f85a74f, type: 3}
+  m_Name: Story01
+  m_EditorClassIdentifier: 
+  SheetName: Assets/Resources/MyStory/StoryLine.xlsx
+  WorksheetName: Story01
+  dataArray:
+  - dialogtext: Hi
+    charaadisplay: 1
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: Hello
+    charaadisplay: 0
+    charabdisplay: 1
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: GO GO GO!
+    charaadisplay: 1
+    charabdisplay: 0
+    ischoise: 1
+    btnatex: GO Home
+    btnamsg: GoHome
+    btnbtex: Go to Shopping
+    btnbmsg: Shopping
+  - dialogtext: asdas
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: asdasd
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: asdads
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: sdasd
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  dataList:
+  - dialogtext: Hi
+    charaadisplay: 1
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: Hello
+    charaadisplay: 0
+    charabdisplay: 1
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: GO GO GO!
+    charaadisplay: 1
+    charabdisplay: 0
+    ischoise: 1
+    btnatex: GO Home
+    btnamsg: GoHome
+    btnbtex: Go to Shopping
+    btnbmsg: Shopping
+  - dialogtext: asdas
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: asdasd
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: asdads
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
+  - dialogtext: sdasd
+    charaadisplay: 0
+    charabdisplay: 0
+    ischoise: 0
+    btnatex: 
+    btnamsg: 
+    btnbtex: 
+    btnbmsg: 
