@@ -24,6 +24,7 @@ public class SimpleBossEnemy : MonoBehaviour
     private bool isFoundPlayer;
     private bool isAttacking;
     private float attackTimer;
+    public GameObject whR;
 
     public float AttackInterval = 3f;
 
@@ -40,14 +41,15 @@ public class SimpleBossEnemy : MonoBehaviour
         attribute = GetComponent<EnemyState>();
         navAgent = GetComponent<NavMeshAgent>();
         if(isPatrol)
-        {
             mobPoints = GameObject.FindGameObjectsWithTag("MobPoint");
-        }
         if (mobPoints != null && mobPoints.Length > 0)
         {
             mobPointIndex = 0;
             navAgent.SetDestination(mobPoints[mobPointIndex].transform.position);
         }
+        whR = transform.DeepFind("WeaponR").gameObject;
+
+        //weaponColR.enabled = false;
     }
 
     // Update is called once per frame
@@ -80,7 +82,7 @@ public class SimpleBossEnemy : MonoBehaviour
             return;
         }
 
-        if (InRange(attribute.attackDistance) && attackTimer < 0)
+        if (InRange(3.0f) && attackTimer < 0)
         {       // attack state
             navAgent.isStopped = true;
             attackTimer = AttackInterval;
@@ -96,7 +98,7 @@ public class SimpleBossEnemy : MonoBehaviour
         else if (navAgent.remainingDistance < 1 && mobPoints != null && mobPoints.Length > 0)
         {       // arrive at one patrol point
             navAgent.isStopped = false;
-            mobPointIndex = (mobPointIndex + 1) % mobPoints.Length;
+            mobPointIndex = Random.Range(1, 3);
             navAgent.SetDestination(mobPoints[mobPointIndex].transform.position);
             animator.SetBool("run", true);
         }
@@ -106,8 +108,10 @@ public class SimpleBossEnemy : MonoBehaviour
     bool InRange(float range)
     {
         var dis = Vector3.Distance(this.transform.position, target.transform.position);
-        if (dis < range)
+        if (dis < range) {
+            //Debug.Log("hola");
             return true;
+        }           
         return false;
     }
 
@@ -115,7 +119,11 @@ public class SimpleBossEnemy : MonoBehaviour
     {
 
         if (attribute.IsDeath)
-            return;
+        {
+            animator.SetBool("death", true);
+            return;      
+        }
+            
 
         int damage = (int)Random.Range(100, 200);
         bool critical = damage > 150;
@@ -126,10 +134,10 @@ public class SimpleBossEnemy : MonoBehaviour
 
     }
 
-    public void Attack()
+    private void OnTriggerEnter(Collider other)
     {
-
-
+        if (other.tag == "weapon")
+            BeAttacked();
     }
 
     public void Death()
@@ -138,4 +146,7 @@ public class SimpleBossEnemy : MonoBehaviour
 
         Destroy(this.gameObject, 3);
     }
+
+ 
+
 }

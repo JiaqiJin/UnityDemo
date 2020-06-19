@@ -22,7 +22,8 @@ public class EnemyState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (HP <= 0)
+            isDeath = true;
     }
 
     
@@ -36,6 +37,11 @@ public class EnemyState : MonoBehaviour
         this.HP -= int.Parse(str);
         if (this.HP < 0)
             isDeath = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+       
     }
 
 }
