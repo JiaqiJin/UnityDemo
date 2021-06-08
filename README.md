@@ -1,7 +1,7 @@
 # UnityTFG
 
 ## Introduction
-Soul-like games developed using Unity and C# during my final degree project.
+Soul-like games demo developed using Unity and C# during my final degree project.
 
 Player Control : 
 - Keys "w, s, a, d" for player moving
