@@ -10,6 +10,7 @@ Player Control :
 - Right mouse button for block
 - Key "t" open inventory
 - Key "o" generate random object in inventory panel
+- Key "f" locking enemy 
 ## Game content:
 - Player Animation State Machine (walk, run etc).
 - Inventory System
